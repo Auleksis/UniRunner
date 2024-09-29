@@ -60,16 +60,14 @@ const RatingsPage = () => {
     });
 
     setShowedUsers(userList.filter(filter));
-  }, [sortMode, genderMode, isSearching]);
+  }, [sortMode, genderMode, isSearching, foundUsers]);
 
   const onSortSelect = (index: number) => {
     setSortMode(index);
-    // setSearching(false);
   };
 
   const onGenderSelect = (index: number) => {
     setGenderMode(index);
-    // setSearching(false);
   };
 
   const onUsersSearchComplete = (objList: Array<User>) => {
