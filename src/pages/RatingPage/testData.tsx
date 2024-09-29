@@ -96,4 +96,16 @@ export const users: Array<User> = [
     total_kilometers: 5,
     total_activities: 3,
   },
+  {
+    name: "t8",
+    family_name: "Чернышев",
+    given_name: "Владислав",
+    email: "random1.email@mail.ru",
+    gender: "Мужской",
+    date_of_birth: "25.04.2003",
+    university_id: "4",
+    id: "8",
+    total_kilometers: 11,
+    total_activities: 3,
+  },
 ];
