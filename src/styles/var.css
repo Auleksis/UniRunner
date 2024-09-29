@@ -1,0 +1,62 @@
+:root {
+  --background: #121212;
+
+  --accent: #344756;
+  --accent-v-2: #7bc3d9;
+  --accent-v-3: #3c4659;
+  --accent-v-4: #7fffd4;
+
+  --text-primary: #82b4c3;
+  --text-primary-v-2: #d5d5d5;
+
+  --hint: #7e7e7e;
+
+  --border-color: #646cff;
+
+  --error-color: #ffd088;
+
+  --default-shadow: 0px 0px 10px;
+
+  --logo-title-text-size: 4rem;
+  --text-size: 1.5rem;
+  --title-text-size: 3rem;
+  --subtitle-text-size: 2rem;
+  --subtext-size: 1rem;
+
+  --border-radius: 1.25rem;
+  --border-radius-2: 0.625rem;
+  --default-padding: 0.625rem 1.875rem;
+}
+
+[data-theme="dark"] {
+  --background: #0d090a;
+
+  --text-primary: #ffffff;
+  --text-secondary: #dadada;
+
+  --accent: #912f56;
+  --accent-hover: #69203d;
+
+  --border: #c0c0c0;
+
+  --shadow: 7px 15px 13px -4px #52000056;
+
+  --sword-light: hsl(336, 100%, 38%);
+
+  --text-v2-primary: #28a9ff;
+  --text-v2-secondary: rgb(56, 115, 150);
+
+  --accent-v2: #ff8400;
+  --accent-v2-hover: #b96000;
+
+  --filter: invert(0%) saturate(100%);
+
+  --header-light: hsl(0, 100%, 50%);
+  --header-color: hsl(0, 0%, 100%);
+}
+
+@media screen and (max-width: 1000px) {
+  html {
+    font-size: 12px;
+  }
+}

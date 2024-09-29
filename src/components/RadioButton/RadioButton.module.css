@@ -1,0 +1,55 @@
+@import url("/src/styles/_text.scss");
+
+.inactive {
+  display: flex;
+
+  flex-direction: column;
+
+  flex: 1;
+
+  padding: var(--default-padding);
+
+  align-items: center;
+
+  border-radius: var(--border-radius);
+
+  border-style: none;
+
+  color: var(--text-primary);
+
+  background-color: var(--background);
+
+  box-shadow: var(--default-shadow);
+}
+
+.active {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+
+  padding: var(--default-padding);
+
+  align-items: center;
+
+  border-radius: var(--border-radius);
+
+  background-color: var(--accent-v-2);
+
+  border-style: none;
+
+  color: var(--background);
+}
+
+.active .default_text {
+  color: inherit;
+}
+
+.inactive:hover {
+  background-color: var(--accent-v-2);
+  color: var(--background);
+
+  & .default_text {
+    color: inherit;
+  }
+}

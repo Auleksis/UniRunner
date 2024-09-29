@@ -1,0 +1,61 @@
+@import url("/src/styles/pages.css");
+
+.ratings_container {
+}
+
+.rating_type_and_search {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1rem;
+
+  padding: var(--default-padding);
+}
+
+.rating_type_container {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 100%;
+
+  gap: 3rem;
+}
+
+.rating_sort_type_container {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.rating_select_container {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  gap: 1rem;
+}
+
+.rating_type_button_selected {
+  color: var(--text-primary);
+  background-color: var(--background);
+}
+
+.rating_student_search_element {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 0px;
+}

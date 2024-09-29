@@ -1,0 +1,56 @@
+@import url("/src/styles/_text.scss");
+
+.header_container .logo_title:hover {
+  text-shadow: 0px 0px 5px var(--accent-v-2);
+}
+
+.header_container {
+  background-color: var(--accent);
+
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: row;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0.4rem 1.2rem;
+}
+
+.name_logo_container {
+  display: flex;
+
+  flex-direction: row;
+
+  align-items: center;
+
+  gap: 1.5rem;
+}
+
+.logo_svg {
+  width: 4rem;
+  height: 4rem;
+
+  fill: transparent;
+
+  fill-opacity: 0;
+
+  color: var(--accent-v-2);
+
+  filter: drop-shadow(0px 0px 5px var(--accent-v-2));
+
+  /* filter: invert(69%) sepia(36%) saturate(396%) hue-rotate(147deg)
+    brightness(99%) contrast(89%) drop-shadow(0px 0px 5px var(--accent-v-2)); */
+}
+
+.buttons_container {
+  display: flex;
+  flex-direction: row-reverse;
+
+  gap: 1.5rem;
+
+  align-items: center;
+}

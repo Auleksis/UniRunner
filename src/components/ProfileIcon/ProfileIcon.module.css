@@ -1,0 +1,14 @@
+.profile_svg {
+  width: 4rem;
+  height: 4rem;
+
+  fill: var(--accent-v-2);
+}
+
+.profile_svg:hover {
+  filter: drop-shadow(0px 0px 5px var(--accent-v-2));
+}
+
+.profile_button {
+  color: #000;
+}

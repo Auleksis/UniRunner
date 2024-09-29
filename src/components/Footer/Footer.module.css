@@ -1,0 +1,14 @@
+@import url("/src/styles/_text.scss");
+
+.footer_container {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+
+  padding: 10px 30px;
+
+  flex: 0 0 auto;
+
+  background-color: var(--accent);
+}

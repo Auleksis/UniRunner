@@ -1,0 +1,74 @@
+@import url("/src/styles/pages.css");
+
+.select_relative_container {
+  position: relative;
+}
+
+.select_container {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  background-color: var(--text-primary-v-2);
+
+  border-radius: var(--border-radius-2);
+
+  padding: var(--default-padding);
+
+  color: var(--background);
+
+  width: 15rem;
+}
+
+.triangle_svg {
+  width: 1rem;
+  height: 1rem;
+  rotate: 180deg;
+}
+
+.select_options_container {
+  position: absolute;
+
+  width: 15rem;
+
+  border-radius: var(--border-radius-2);
+
+  padding: var(--border-radius-2) 0;
+
+  text-align: left;
+
+  background-color: var(--text-primary-v-2);
+
+  z-index: 50;
+
+  box-shadow: var(--default-shadow) var(--background);
+}
+
+.list {
+  marker: none;
+
+  overflow-x: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--background) transparent;
+}
+
+.list_item {
+  padding: 0 var(--border-radius);
+
+  width: 100%;
+}
+
+.list_item:hover {
+  background-color: var(--accent-v-4);
+  /* color: var(--text-primary-v-2); */
+}
+
+.list_item_seleced {
+  background-color: var(--accent-v-2);
+}

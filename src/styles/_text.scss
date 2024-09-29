@@ -1,0 +1,42 @@
+@use "./mixins";
+@import url("./var.css");
+
+.logo_title {
+  @include mixins.text(var(--logo-title-text-size), var(--text-primary));
+}
+
+.default_text {
+  @include mixins.text(var(--text-size), var(--text-primary-v-2));
+}
+
+.invert_default_text {
+  @include mixins.text(var(--text-size), var(--background));
+}
+
+.title {
+  @include mixins.text(var(--title-text-size), var(--text-primary));
+}
+
+.subtitle {
+  @include mixins.text(var(--subtitle-text-size), var(--text-primary-v-2));
+}
+
+.error_text {
+  @include mixins.text(var(--subtext-size), var(--error-color));
+}
+
+.invert_default_text {
+  @include mixins.text(var(--text-size), var(--background));
+}
+
+.subtext {
+  @include mixins.text(var(--subtext-size), var(--text-primary-v-2));
+}
+
+.invert_subtext {
+  @include mixins.text(var(--subtext-size), var(--background));
+}
+
+.title_2 {
+  @include mixins.text(var(--title-text-size), var(--accent-v-4));
+}

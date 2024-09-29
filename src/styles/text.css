@@ -1,0 +1,71 @@
+.logo_title {
+  font-size: 60px;
+  color: var(--text-primary);
+}
+
+.text {
+}
+
+.intro {
+  margin: 0;
+  align-self: center;
+  font-size: 24px;
+}
+
+.title {
+  margin: 40px;
+  font-size: 102px;
+  text-align: center;
+  color: var(--text-primary);
+  text-shadow: 0px 5px 10px var(--sword-light), 0px -5px 10px var(--sword-light),
+    5px 0px 10px var(--sword-light), -5px 0px 10px var(--sword-light);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 38px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.subtitle2 {
+  margin: 0;
+  font-size: 38px;
+  text-indent: 30px;
+  text-align: center;
+}
+
+.glowing_text {
+  text-shadow: 0px 2px 3px var(--sword-light), 0px -2px 3px var(--sword-light),
+    2px 0px 3px var(--sword-light), -2px 0px 3px var(--sword-light);
+}
+
+.underlined_text {
+  text-decoration: underline;
+}
+
+.superscript {
+  font-size: 16px;
+}
+
+.centered_text {
+  text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .text {
+    font-size: 28px;
+  }
+
+  .title {
+    font-size: 80px;
+  }
+
+  .subtitle {
+    font-size: 28px;
+  }
+
+  .subtitle2 {
+    font-size: 28px;
+  }
+}

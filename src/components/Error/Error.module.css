@@ -1,0 +1,12 @@
+@import url("/src/styles/_text.scss");
+
+.error_icon {
+  width: 20px;
+  height: 20px;
+}
+
+.error_div {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}

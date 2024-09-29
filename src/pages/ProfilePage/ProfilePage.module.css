@@ -1,0 +1,24 @@
+@import url("/src/styles/pages.css");
+
+.info_div {
+  display: flex;
+
+  flex-direction: column;
+
+  padding-top: 30px;
+
+  gap: 20px;
+}
+
+.info_details_div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.text_link_div {
+  display: flex;
+  flex-direction: row;
+
+  gap: 20px;
+}

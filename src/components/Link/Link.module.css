@@ -1,0 +1,15 @@
+@import url("/src/styles/_text.scss");
+
+.link {
+  color: var(--text-primary-v-2);
+  text-decoration: underline;
+}
+
+.link:hover {
+  /* color: var(--text-primary); */
+  text-shadow: 0px 0px 10px;
+}
+
+.link:active {
+  color: var(--text-primary);
+}

@@ -1,0 +1,9 @@
+@mixin text($size, $color) {
+  font-size: $size;
+  color: $color;
+}
+
+@mixin svg($size) {
+  height: $size;
+  width: $size;
+}

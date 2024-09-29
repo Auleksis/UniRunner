@@ -1,0 +1,77 @@
+@import url("/src/styles/_text.scss");
+
+.container {
+  display: flex;
+  justify-content: center;
+  height: max-content;
+  overflow: hidden;
+  width: fit-content;
+
+  align-items: center;
+}
+
+.side_icon {
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+
+  filter: invert(69%) sepia(36%) saturate(396%) hue-rotate(147deg)
+    brightness(99%) contrast(89%) drop-shadow(0px 0px 5px var(--accent-v-2));
+}
+
+.switch_checkbox {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.switch_label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 120px;
+  height: 70px;
+
+  background: var(--background);
+
+  border-radius: 20px;
+
+  padding: 10px;
+
+  position: relative;
+
+  transition: background-color 0.2s;
+
+  border-style: solid;
+  border-width: 4px;
+  border-color: var(--accent-v-2);
+}
+
+.switch_label .switch_button {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 5px;
+  width: 45px;
+  height: 45px;
+  border-radius: 45px;
+  transition: 0.2s;
+
+  overflow: hidden;
+
+  box-shadow: var(--shadow);
+}
+
+.switch_checkbox:checked + .switch_label .switch_button {
+  left: calc(100% - 2px);
+  transform: translateX(-100%);
+}
+
+.switch_label:hover .switch_button {
+  width: 60px;
+}
+
+.switch_label:active .switch_button {
+  width: 80px;
+}

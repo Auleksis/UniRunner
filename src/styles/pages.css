@@ -1,0 +1,22 @@
+@import url("./var.css");
+@import url("./_text.scss");
+
+.hr_horizontal {
+  color: inherit;
+  width: 100%;
+  background-color: var(--background);
+}
+
+.vertical_line {
+  width: 1px;
+
+  border-style: none;
+
+  height: 2rem;
+
+  float: left;
+
+  background-color: var(--background);
+
+  margin: 0;
+}
