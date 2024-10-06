@@ -35,9 +35,11 @@ const ProfilePage = () => {
       const fullData = await keycloak.loadUserProfile();
       setUserData(fullData);
 
-      console.log(fullData);
+      // console.log(fullData);
 
-      console.log(keycloak.token);
+      // console.log(`Authenticated: ${keycloak.authenticated}`);
+
+      // console.log(keycloak.token);
 
       // const url = "http://localhost:8081/api/v1/users/list?page=1&size=10";
 
@@ -53,7 +55,7 @@ const ProfilePage = () => {
 
       var diff = new Date(data2.getTime() - data1.getTime());
 
-      console.log(diff);
+      // console.log(diff);
 
       setAge(diff.getUTCFullYear() - 1970);
     };

@@ -3,17 +3,18 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import s from "./Layout.module.css";
 import { useKeycloak } from "@react-keycloak/web";
+import PacerInstructions from "../PacerInstructions/PacerInstructions";
 
 const Layout = () => {
   const { initialized } = useKeycloak();
 
-  // if (!initialized) {
-  //   return (
-  //     <div className={s.layout}>
-  //       <p className={s.default_text}>Загрузка</p>
-  //     </div>
-  //   );
-  // }
+  if (!initialized) {
+    return (
+      <div className={s.layout}>
+        <p className={s.default_text}>Загрузка</p>
+      </div>
+    );
+  }
 
   return (
     <div className={s.layout}>
@@ -24,6 +25,7 @@ const Layout = () => {
         </div>
         <Footer />
       </main>
+      <PacerInstructions />
     </div>
   );
 };

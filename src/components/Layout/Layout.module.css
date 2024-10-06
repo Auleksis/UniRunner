@@ -1,4 +1,4 @@
-@import url("/src/styles/_text.scss");
+@import url("/src/styles/pages.css");
 
 .layout {
   display: flex;

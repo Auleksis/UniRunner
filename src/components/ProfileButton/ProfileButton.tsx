@@ -1,7 +1,6 @@
 import { useKeycloak } from "@react-keycloak/web";
 import s from "./ProfileButton.module.scss";
 import Button from "../Button/Button";
-import ProfileIcon from "../ProfileIcon/ProfileIcon";
 
 import UserIcon from "/src/assets/icons/profile.svg?react";
 import ExitIcon from "/src/assets/icons/exit.svg?react";
@@ -33,7 +32,6 @@ const ProfileButton = () => {
       text: "Перейти в профиль",
       svg: <UserIcon className={s.menu_item_profile_icon} />,
       onClick: () => {
-        // keycloak.accountManagement();
         navigate("/profile");
       },
     },

@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import RatingLine from "../../components/RatingLine/RatingLine";
 import s from "./RatingPage.module.css";
-import { User, users } from "./testData";
-import Button from "../../components/Button/Button";
 import Select from "../../components/Select/Select";
 import RadioButtonGroup from "../../components/RadioButton/RadioButtonGroup";
 import useList from "../../components/RadioButton/useList";
 import SearchLine from "../../components/SearchLine/SearchLine";
+import { User } from "../../models/User";
+import { getUsers } from "../../services/api";
 
 const RatingsPage = () => {
+  //list of all users
+  const [users, setUsers] = useState<Array<User>>([]);
+
   const [maxDistance, setMaxDistance] = useState<number>(0);
 
   //0 = sort by distance, 1 = sort by count of activities
@@ -32,6 +35,10 @@ const RatingsPage = () => {
 
   const genderOptions = ["Всех", "Юношей", "Девушек"];
 
+  //List view settings
+  const [page, setPage] = useState<number>(0);
+  const [pageObjectCount, setPageObjectCount] = useState<number>(10000);
+
   const onRatingTypeSelected = (index: number) => {
     onRatingTypeSelect(index);
   };
@@ -45,17 +52,29 @@ const RatingsPage = () => {
   };
 
   useEffect(() => {
-    users.sort((u1, u2) => {
-      return u2.total_kilometers - u1.total_kilometers;
-    });
-    setMaxDistance(users[0].total_kilometers);
+    const fetchUsers = async () => {
+      const fetchedUsers = await getUsers(
+        page * pageObjectCount,
+        pageObjectCount
+      );
+
+      fetchedUsers.sort((u1, u2) => {
+        return u2.total_distance - u1.total_distance;
+      });
+      setMaxDistance(fetchedUsers[0].total_distance);
+
+      setUsers(fetchedUsers);
+      setShowedUsers(fetchedUsers);
+    };
+
+    fetchUsers();
   }, []);
 
   useEffect(() => {
     let userList: Array<User> = isSearching ? foundUsers : users;
     userList.sort((u1, u2) => {
       return sortMode == 0
-        ? u2.total_kilometers - u1.total_kilometers
+        ? u2.total_distance - u1.total_distance
         : u2.total_activities - u1.total_activities;
     });
 
@@ -82,11 +101,11 @@ const RatingsPage = () => {
 
   const userSearchHandler = (user: User) => {
     return (
-      user.family_name +
+      user.last_name +
       " " +
-      user.given_name +
+      user.first_name +
       "\nСпортивный клуб: " +
-      user.university_id
+      user.university
     );
   };
 
@@ -94,11 +113,11 @@ const RatingsPage = () => {
     return (
       <div className={s.rating_student_search_element}>
         <p className={s.invert_default_text}>
-          {user.family_name + " " + user.given_name}
+          {user.last_name + " " + user.first_name}
         </p>
         <p
           className={s.invert_subtext}
-        >{`Спортивный клуб: ${user.university_id}`}</p>
+        >{`Спортивный клуб: ${user.university}`}</p>
         <hr className={s.hr_horizontal} style={{ height: "3px" }} />
       </div>
     );
@@ -171,10 +190,10 @@ const RatingsPage = () => {
         <div className={s.ratings_container}>
           {showedUsers.map((user, index) => (
             <RatingLine
-              name={user.given_name + " " + user.family_name}
+              name={user.last_name + " " + user.first_name}
               index={index + 1}
               activities={user.total_activities}
-              distance={user.total_kilometers}
+              distance={user.total_distance}
               max_distance={maxDistance}
               key={index}
             />
