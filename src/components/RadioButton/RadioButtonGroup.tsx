@@ -1,6 +1,6 @@
 import s from "./RadioButton.module.css";
 
-import React, { ReactElement, ReactNode, useState } from "react";
+import React from "react";
 
 interface RadioButtonProps extends React.ComponentProps<"button"> {
   text: string;

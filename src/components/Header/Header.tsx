@@ -7,20 +7,10 @@ import Moon from "/src/assets/icons/moon.svg";
 import Runner from "/src/assets/icons/runner.svg?react";
 
 import Switch from "../Switch/Switch";
-import { useState } from "react";
 import Link from "../Link/Link";
-import Button from "../Button/Button";
-import { useKeycloak } from "@react-keycloak/web";
 import ProfileButton from "../ProfileButton/ProfileButton";
 
 const Header = () => {
-  const { keycloak, initialized } = useKeycloak();
-
-  const getUserInfo = async () => {
-    const response = keycloak.userInfo;
-    console.log(response);
-  };
-
   return (
     <>
       <header>

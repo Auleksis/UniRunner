@@ -13,7 +13,6 @@ const Select: React.FunctionComponent<SelectProps> = ({
   options,
   onSelectClicked,
   indexSelected,
-  ...selectProps
 }) => {
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(

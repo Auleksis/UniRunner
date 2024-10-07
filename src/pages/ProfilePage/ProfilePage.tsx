@@ -4,7 +4,6 @@ import s from "./ProfilePage.module.css";
 import { KeycloakProfile } from "keycloak-js";
 import Link from "../../components/Link/Link";
 import DistanceStats from "../../components/DistanceStats/DistanceStats";
-import axios from "axios";
 
 //TODO SETUP REDUX
 
@@ -48,7 +47,8 @@ const ProfilePage = () => {
       // });
       // console.log(ans);
 
-      const birthday: string = fullData.attributes?.birthday[0] as string;
+      //const birthday: string = (fullData.attributes?.birthday[0] as unknown) as string;
+      const birthday = "01-01-2004";
 
       var data1 = new Date(birthday);
       var data2 = new Date();
@@ -97,7 +97,7 @@ const ProfilePage = () => {
           </div>
           <div className={s.text_link_div}>
             <p className={s.default_text}>
-              Место в рейтинге СК {userData?.attributes["university"]}: 1
+              {/* Место в рейтинге СК {userData?.attributes["university"]}: 1 */}
             </p>
             <Link
               text="перейти к рейтингу участников спортивного клуба"

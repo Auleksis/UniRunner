@@ -43,7 +43,7 @@ const RatingsPage = () => {
     onRatingTypeSelect(index);
   };
 
-  const filter = (user: User, index: number, array: User[]) => {
+  const filter = (user: User) => {
     return (
       genderMode == 0 ||
       (user.gender == "Мужской" && genderMode == 1) ||

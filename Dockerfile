@@ -1,5 +1,5 @@
 # set the base image to create the image for react app  
-FROM node:20-alpine  
+FROM node:20-alpine as builder  
   
 # set the working directory to /app  
 WORKDIR /app  
@@ -13,12 +13,10 @@ RUN npm install
 # copy the rest of the files to the working directory  
 COPY . .  
 
-RUN npm run build
+RUN npx vite build
   
-FROM nginx
-# Copy the ngnix.conf to the container
-COPY ngnix.conf /etc/nginx/conf.d/default.conf
-# Copy the React app build files to the container
-COPY --from=build /app/build /usr/share/nginx/html
+FROM nginx:1.21.0-alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
