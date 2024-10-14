@@ -11,7 +11,13 @@ const Layout = () => {
   if (!initialized) {
     return (
       <div className={s.layout}>
-        <p className={s.default_text}>Загрузка</p>
+        <Header />
+        <main className={s.main_container}>
+          <div className={s.content_container}>
+            <p className={s.default_text}>Загрузка</p>
+          </div>
+          <Footer />
+        </main>
       </div>
     );
   }

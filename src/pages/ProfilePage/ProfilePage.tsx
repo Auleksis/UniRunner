@@ -1,17 +1,19 @@
 import s from "./ProfilePage.module.css";
 import { useEffect, useState } from "react";
-import Link from "../../components/Link/Link";
 import DistanceStats from "../../components/DistanceStats/DistanceStats";
 import { User } from "../../models/User";
 import { getUserData } from "../../services/api";
 import ProfilePhoto from "../../components/ProfilePhoto/ProfilePhoto";
+import Person from "/src/assets/icons/fight.svg?react";
 
 const ProfilePage = () => {
   const [userData, setUserData] = useState<User>();
   const [age, setAge] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const loadData = async () => {
+      setLoading(true);
       const data = await getUserData();
 
       if (!data) {
@@ -20,12 +22,16 @@ const ProfilePage = () => {
 
       setUserData(data);
 
+      console.log(data);
+
       var date1 = new Date(data.birthday);
       var date2 = new Date();
 
       var diff = new Date(date2.getTime() - date1.getTime());
 
       setAge(diff.getUTCFullYear() - 1970);
+
+      setLoading(false);
     };
     loadData();
   }, []);
@@ -36,46 +42,62 @@ const ProfilePage = () => {
 
   return (
     <div>
-      <h1 className={s.title}>Профиль</h1>
-      <hr className={s.hr_horizontal} />
-      <div className={s.user_info_div}>
-        <div className={s.info_div}>
-          <h1 className={s.title}>
-            {userData?.firstName + " " + userData?.lastName}
-          </h1>
-          <div className={s.info_details_div}>
-            <p className={s.default_text}>
-              Спортивный клуб: {userData?.university}
-            </p>
-            <p className={s.default_text}>Пол: {userData?.gender}</p>
-            <p className={s.default_text}>Возраст: {age}</p>
-          </div>
-        </div>
-        <div className={s.user_photo}>
-          <ProfilePhoto onPhotoChanged={handlePhotoChanged} />
-        </div>
-      </div>
+      {loading && <p className={s.default_text}>Загрузка</p>}
 
-      <hr className={s.hr_horizontal} />
-
-      <div className={s.info_div}>
-        <div className={s.info_details_div}>
-          <div className={s.text_link_div}>
-            <p className={s.default_text}>Место в общем рейтинге: 1</p>
-            <Link text="перейти к рейтингу участников" to={"#"} />
+      {!loading && (
+        <>
+          <h1 className={s.title}>Профиль</h1>
+          <hr className={s.hr_horizontal} />
+          <div className={s.user_info_div}>
+            <div className={s.info_div}>
+              <h1 className={s.title}>
+                {userData?.firstName + " " + userData?.lastName}
+              </h1>
+              <div className={s.info_details_div}>
+                <p className={s.default_text}>
+                  Спортивный клуб: {userData?.university}
+                </p>
+                <p className={s.default_text}>Пол: {userData?.gender}</p>
+                <p className={s.default_text}>Возраст: {age}</p>
+              </div>
+            </div>
+            <div className={s.user_photo}>
+              <ProfilePhoto onPhotoChanged={handlePhotoChanged} />
+            </div>
           </div>
-          <div className={s.text_link_div}>
-            <p className={s.default_text}>
-              Место в рейтинге СК {userData?.university}: 1
-            </p>
-            <Link
-              text="перейти к рейтингу участников спортивного клуба"
-              to={"#"}
+
+          <hr className={s.hr_horizontal} />
+
+          <div className={s.info_div}>
+            {/* <div className={s.info_details_div}>
+              <div className={s.text_link_div}>
+                <p className={s.default_text}>Место в общем рейтинге: 1</p>
+                <Link text="перейти к рейтингу участников" to={"#"} />
+              </div>
+              <div className={s.text_link_div}>
+                <p className={s.default_text}>
+                  Место в рейтинге СК {userData?.university}: 1
+                </p>
+                <Link
+                  text="перейти к рейтингу участников спортивного клуба"
+                  to={"#"}
+                />
+              </div>
+            </div> */}
+            <DistanceStats
+              cur_dist={userData?.total_distance}
+              max_dist={userData?.total_distance}
             />
+            <div className={s.line_entity_additional_value_container}>
+              <div className={s.line_entity_additional_info}>
+                <Person className={s.person_activities_svg} />
+                <p className={s.default_text}>Общее число активностей</p>
+              </div>
+              <p className={s.title_2}>{userData?.total_activities}</p>
+            </div>
           </div>
-        </div>
-        <DistanceStats cur_dist={20} max_dist={20} />
-      </div>
+        </>
+      )}
     </div>
   );
 };

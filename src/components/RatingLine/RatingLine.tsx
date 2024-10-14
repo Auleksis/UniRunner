@@ -16,8 +16,8 @@ const RatingLine: React.FunctionComponent<RatingLineProps> = (
   return (
     <div className={s.line_container}>
       <div className={s.line_entity_index_name}>
-        <p className={s.title}>{props.index}</p>
-        <p className={s.title}>{props.name}</p>
+        <p className={s.subtitle}>{props.index}</p>
+        <p className={s.subtitle}>{props.name}</p>
       </div>
       <div className={s.line_distance_container}>
         <DistanceStats

@@ -60,7 +60,7 @@ export async function updatePaserInfo(
 export async function getUniversities(
   skip: number,
   limit: number,
-  orderBy: string
+  orderBy: string = "distance_asc"
 ): Promise<Array<University>> {
   let config = {
     params: {
@@ -73,6 +73,12 @@ export async function getUniversities(
   const universities = await api.get("/universities", config);
 
   return universities.data;
+}
+
+export async function getActivities(): Promise<Array<any>> {
+  const activities = await api.get("/activities");
+
+  return activities.data;
 }
 
 export default api;
