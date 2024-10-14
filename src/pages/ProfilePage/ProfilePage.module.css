@@ -5,9 +5,29 @@
 
   flex-direction: column;
 
-  padding-top: 30px;
+  padding-top: 1.875rem;
 
-  gap: 20px;
+  gap: 1.25rem;
+}
+
+.user_photo {
+  display: flex;
+
+  flex-direction: row-reverse;
+}
+
+.user_info_div {
+  display: flex;
+
+  flex-direction: row;
+
+  justify-content: space-between;
+
+  padding-top: 1.875rem;
+
+  .info_div {
+    padding-top: 0;
+  }
 }
 
 .info_details_div {

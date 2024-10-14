@@ -1,89 +1,58 @@
-import { useEffect, useState } from "react";
-import keycloak from "../../Keycloak";
 import s from "./ProfilePage.module.css";
-import { KeycloakProfile } from "keycloak-js";
+import { useEffect, useState } from "react";
 import Link from "../../components/Link/Link";
 import DistanceStats from "../../components/DistanceStats/DistanceStats";
-
-//TODO SETUP REDUX
-
-export type User = {
-  email: string;
-  emailVerified: string;
-
-  firstName: string;
-  lastName: string;
-
-  gender: Array<string>;
-
-  university: Array<string>;
-
-  birthday: Array<string>;
-
-  id: string;
-
-  username: string;
-};
+import { User } from "../../models/User";
+import { getUserData } from "../../services/api";
+import ProfilePhoto from "../../components/ProfilePhoto/ProfilePhoto";
 
 const ProfilePage = () => {
-  const [userData, setUserData] = useState<KeycloakProfile>();
+  const [userData, setUserData] = useState<User>();
   const [age, setAge] = useState<number>(0);
 
   useEffect(() => {
     const loadData = async () => {
-      const fullData = await keycloak.loadUserProfile();
-      setUserData(fullData);
+      const data = await getUserData();
 
-      // console.log(fullData);
+      if (!data) {
+        console.log("Error while loadind user data");
+      }
 
-      // console.log(`Authenticated: ${keycloak.authenticated}`);
+      setUserData(data);
 
-      // console.log(keycloak.token);
+      var date1 = new Date(data.birthday);
+      var date2 = new Date();
 
-      // const url = "http://localhost:8081/api/v1/users/list?page=1&size=10";
-
-      // const ans = await axios.get(url, {
-      //   headers: { Authorization: `Bearer ${keycloak.token}` },
-      // });
-      // console.log(ans);
-
-      //const birthday: string = (fullData.attributes?.birthday[0] as unknown) as string;
-      const birthday = "01-01-2004";
-
-      var data1 = new Date(birthday);
-      var data2 = new Date();
-
-      var diff = new Date(data2.getTime() - data1.getTime());
-
-      // console.log(diff);
+      var diff = new Date(date2.getTime() - date1.getTime());
 
       setAge(diff.getUTCFullYear() - 1970);
     };
     loadData();
   }, []);
 
+  const handlePhotoChanged = (photo: File) => {
+    console.log(photo);
+  };
+
   return (
     <div>
       <h1 className={s.title}>Профиль</h1>
       <hr className={s.hr_horizontal} />
-      <div className={s.info_div}>
-        <h1 className={s.title}>
-          {userData?.firstName + " " + userData?.lastName}
-        </h1>
-        <div className={s.info_details_div}>
-          <p className={s.default_text}>
-            Спортивный клуб:{" "}
-            {userData?.attributes
-              ? (userData?.attributes["university"] as string)
-              : ""}
-          </p>
-          <p className={s.default_text}>
-            Пол:{" "}
-            {userData?.attributes
-              ? (userData?.attributes["gender"] as string)
-              : ""}
-          </p>
-          <p className={s.default_text}>Возраст: {age}</p>
+      <div className={s.user_info_div}>
+        <div className={s.info_div}>
+          <h1 className={s.title}>
+            {userData?.firstName + " " + userData?.lastName}
+          </h1>
+          <div className={s.info_details_div}>
+            <p className={s.default_text}>
+              Спортивный клуб: {userData?.university}
+            </p>
+            <p className={s.default_text}>Пол: {userData?.gender}</p>
+            <p className={s.default_text}>Возраст: {age}</p>
+          </div>
+        </div>
+        <div className={s.user_photo}>
+          <ProfilePhoto onPhotoChanged={handlePhotoChanged} />
         </div>
       </div>
 
@@ -97,7 +66,7 @@ const ProfilePage = () => {
           </div>
           <div className={s.text_link_div}>
             <p className={s.default_text}>
-              {/* Место в рейтинге СК {userData?.attributes["university"]}: 1 */}
+              Место в рейтинге СК {userData?.university}: 1
             </p>
             <Link
               text="перейти к рейтингу участников спортивного клуба"

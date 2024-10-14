@@ -1,0 +1,73 @@
+@import url("/src/styles/pages.css");
+
+.menu_div {
+  position: absolute;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 1rem 0;
+
+  gap: 0.5rem;
+
+  background-color: var(--text-primary-v-2);
+
+  border-style: none;
+
+  box-shadow: 0 0 5px var(--accent-v-2);
+
+  border-radius: var(--border-radius);
+
+  z-index: 100;
+}
+
+.menu_item_div {
+  display: flex;
+
+  flex-direction: row;
+
+  width: 100%;
+
+  gap: 1rem;
+
+  border-style: none;
+
+  background-color: transparent;
+
+  padding-left: 1rem;
+  padding-right: 3rem;
+
+  align-items: center;
+
+  text-align: left;
+}
+
+.menu_item_div:hover {
+  background-color: var(--accent-v-2);
+}
+
+.menu_item_profile_icon {
+  @include mixins.svg(2rem);
+
+  fill: var(--background);
+}
+
+.menu_item_exit_icon {
+  @include mixins.svg(2rem);
+
+  fill: var(--background);
+
+  color: transparent;
+}
+
+.svg_div {
+  display: flex;
+  flex-direction: row;
+
+  gap: 0.2rem;
+
+  height: 100%;
+
+  align-items: center;
+}

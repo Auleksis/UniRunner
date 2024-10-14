@@ -7,6 +7,7 @@ import useList from "../../components/RadioButton/useList";
 import SearchLine from "../../components/SearchLine/SearchLine";
 import { User } from "../../models/User";
 import { getUsers } from "../../services/api";
+import Button from "../../components/Button/Button";
 
 const RatingsPage = () => {
   //list of all users
@@ -37,7 +38,7 @@ const RatingsPage = () => {
 
   //List view settings
   const [page, setPage] = useState<number>(0);
-  const [pageObjectCount, setPageObjectCount] = useState<number>(10000);
+  const [pageObjectCount, setPageObjectCount] = useState<number>(10);
 
   const onRatingTypeSelected = (index: number) => {
     onRatingTypeSelect(index);
@@ -101,9 +102,9 @@ const RatingsPage = () => {
 
   const userSearchHandler = (user: User) => {
     return (
-      user.last_name +
+      user.lastName +
       " " +
-      user.first_name +
+      user.firstName +
       "\nСпортивный клуб: " +
       user.university
     );
@@ -113,7 +114,7 @@ const RatingsPage = () => {
     return (
       <div className={s.rating_student_search_element}>
         <p className={s.invert_default_text}>
-          {user.last_name + " " + user.first_name}
+          {user.lastName + " " + user.firstName}
         </p>
         <p
           className={s.invert_subtext}
@@ -134,6 +135,16 @@ const RatingsPage = () => {
         <hr className={s.hr_horizontal} style={{ height: "3px" }} />
       </div>
     );
+  };
+
+  const handlePageNext = () => {
+    setPage(page + 1);
+  };
+
+  const handlePagePrev = () => {
+    if (page > 0) {
+      setPage(page - 1);
+    }
   };
 
   return (
@@ -186,11 +197,17 @@ const RatingsPage = () => {
           )}
         </div>
       </div>
+      <div className={s.page_switch_div}>
+        <Button text="Назад" onClick={handlePagePrev} />
+        <p className={s.default_text}>Страница {page + 1}</p>
+        <Button text="Вперёд" onClick={handlePageNext} />
+      </div>
+      <hr className={s.hr_horizontal} />
       {selectedRatingType === "Студенты" && (
         <div className={s.ratings_container}>
           {showedUsers.map((user, index) => (
             <RatingLine
-              name={user.last_name + " " + user.first_name}
+              name={user.lastName + " " + user.firstName}
               index={index + 1}
               activities={user.total_activities}
               distance={user.total_distance}
@@ -200,6 +217,12 @@ const RatingsPage = () => {
           ))}
         </div>
       )}
+      <hr className={s.hr_horizontal} />
+      <div className={s.page_switch_div}>
+        <Button text="Назад" onClick={handlePagePrev} />
+        <p className={s.default_text}>Страница {page + 1}</p>
+        <Button text="Вперёд" onClick={handlePageNext} />
+      </div>
     </>
   );
 };

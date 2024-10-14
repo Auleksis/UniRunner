@@ -1,6 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import keycloak from "../Keycloak";
 import { User } from "../models/User";
+import { University } from "../models/University";
 
 const API_URL = "/api/v1";
 
@@ -17,6 +18,13 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.log(error);
+  }
+);
+
 export async function getUsers(
   skip: number,
   limit: number
@@ -27,17 +35,13 @@ export async function getUsers(
       limit: limit,
     },
   } as AxiosRequestConfig<any>;
-  const users = await api.get("users/list", config);
-
-  if (users.status == 200) {
-    return users.data;
-  }
-
-  return [];
+  const users = await api.get<Array<User>>("/users/list", config);
+  return users.data;
 }
 
 export async function getUserData(): Promise<User> {
-  return api.get("/user");
+  const userData = await api.get<User>("/user");
+  return userData.data;
 }
 
 export async function updatePaserInfo(
@@ -45,11 +49,30 @@ export async function updatePaserInfo(
   pacerClientSecret: string,
   pacerCode: string
 ): Promise<any> {
-  return api.put("/user", {
+  const updatedData = await api.put("/user", {
     pacer_client_id: pacerClientId,
     pacer_client_secret: pacerClientSecret,
     pacer_code: pacerCode,
   });
+  return updatedData.data;
+}
+
+export async function getUniversities(
+  skip: number,
+  limit: number,
+  orderBy: string
+): Promise<Array<University>> {
+  let config = {
+    params: {
+      skip: skip,
+      limit: limit,
+      order_by: orderBy,
+    },
+  } as AxiosRequestConfig<any>;
+
+  const universities = await api.get("/universities", config);
+
+  return universities.data;
 }
 
 export default api;

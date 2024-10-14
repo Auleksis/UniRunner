@@ -1,0 +1,72 @@
+@import url("/src/styles/pages.css");
+
+.action_box_div {
+  position: absolute;
+
+  display: flex;
+
+  flex-direction: column;
+
+  background-color: rgb(from var(--accent-v-3) r g b / 80%);
+
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+
+  width: 100%;
+
+  align-items: center;
+
+  z-index: 100;
+
+  visibility: hidden;
+
+  transition: transform 0.5s;
+
+  padding-bottom: var(--border-radius);
+}
+
+.photo_relative_container {
+  position: relative;
+
+  height: fit-content;
+
+  overflow: hidden;
+
+  &:hover .action_box_div {
+    visibility: visible;
+
+    transform: translateY(-100%);
+  }
+}
+
+.photo {
+  height: 12rem;
+
+  width: 12rem;
+
+  background-color: var(--text-primary-v-2);
+
+  border-radius: var(--border-radius);
+
+  object-fit: cover;
+}
+
+.input_photo {
+  display: none;
+}
+
+.change_photo_button {
+  width: 100%;
+
+  background-color: transparent;
+
+  border-style: none;
+
+  &:hover {
+    background-color: var(--accent-v-2);
+  }
+
+  &:hover .subtext {
+    color: var(--background);
+  }
+}

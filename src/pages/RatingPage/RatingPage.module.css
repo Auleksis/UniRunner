@@ -44,6 +44,8 @@
   align-items: center;
 
   gap: 1rem;
+
+  padding-bottom: 2rem;
 }
 
 .rating_type_button_selected {
@@ -58,4 +60,12 @@
   width: 100%;
 
   gap: 0px;
+}
+
+.page_switch_div {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: space-between;
 }

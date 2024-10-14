@@ -3,10 +3,6 @@ export interface User {
   username: string;
   firstName: string;
   lastName: string;
-
-  first_name: string; //REMOVE AFTER FIX ON BACKEND
-  last_name: string; //REMOVE AFTER FIX ON BACKEND
-
   email: string;
   gender: string;
   birthday: string;
