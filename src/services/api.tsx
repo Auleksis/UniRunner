@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import keycloak from "../Keycloak";
-import { User } from "../models/User";
+import { User } from "../features/user/User";
 import { University } from "../models/University";
 
 const API_URL = "/api/v1";

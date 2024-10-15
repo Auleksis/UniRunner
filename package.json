@@ -12,6 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "@react-keycloak/web": "^3.4.0",
+    "@reduxjs/toolkit": "^2.3.0",
     "axios": "^1.7.7",
     "i18next": "^23.12.3",
     "i18next-browser-languagedetector": "^8.0.0",

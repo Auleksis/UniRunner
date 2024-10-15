@@ -1,39 +1,26 @@
 import s from "./ProfilePage.module.css";
 import { useEffect, useState } from "react";
 import DistanceStats from "../../components/DistanceStats/DistanceStats";
-import { User } from "../../models/User";
-import { getUserData } from "../../services/api";
 import ProfilePhoto from "../../components/ProfilePhoto/ProfilePhoto";
 import Person from "/src/assets/icons/fight.svg?react";
+import { RootState, useAppDispatch } from "../../../store";
+import { useSelector } from "react-redux";
+import { getUserData } from "../../features/user/UserThunk";
+import { cleanPacerInfo } from "../../features/user/User";
 
 const ProfilePage = () => {
-  const [userData, setUserData] = useState<User>();
-  const [age, setAge] = useState<number>(0);
-  const [loading, setLoading] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+  const userData = useSelector((state: RootState) => state.user);
+
+  const fetchUserData = async () => {
+    if (!userData.loaded) {
+      await dispatch(getUserData());
+      await dispatch(cleanPacerInfo());
+    }
+  };
 
   useEffect(() => {
-    const loadData = async () => {
-      setLoading(true);
-      const data = await getUserData();
-
-      if (!data) {
-        console.log("Error while loadind user data");
-      }
-
-      setUserData(data);
-
-      console.log(data);
-
-      var date1 = new Date(data.birthday);
-      var date2 = new Date();
-
-      var diff = new Date(date2.getTime() - date1.getTime());
-
-      setAge(diff.getUTCFullYear() - 1970);
-
-      setLoading(false);
-    };
-    loadData();
+    fetchUserData();
   }, []);
 
   const handlePhotoChanged = (photo: File) => {
@@ -42,23 +29,23 @@ const ProfilePage = () => {
 
   return (
     <div>
-      {loading && <p className={s.default_text}>Загрузка</p>}
+      {!userData.loaded && <p className={s.default_text}>Загрузка</p>}
 
-      {!loading && (
+      {userData.loaded && (
         <>
           <h1 className={s.title}>Профиль</h1>
           <hr className={s.hr_horizontal} />
           <div className={s.user_info_div}>
             <div className={s.info_div}>
               <h1 className={s.title}>
-                {userData?.firstName + " " + userData?.lastName}
+                {userData.firstName + " " + userData.lastName}
               </h1>
               <div className={s.info_details_div}>
                 <p className={s.default_text}>
-                  Спортивный клуб: {userData?.university}
+                  Спортивный клуб: {userData.university}
                 </p>
-                <p className={s.default_text}>Пол: {userData?.gender}</p>
-                <p className={s.default_text}>Возраст: {age}</p>
+                <p className={s.default_text}>Пол: {userData.gender}</p>
+                <p className={s.default_text}>Возраст: {userData.age}</p>
               </div>
             </div>
             <div className={s.user_photo}>
@@ -76,7 +63,7 @@ const ProfilePage = () => {
               </div>
               <div className={s.text_link_div}>
                 <p className={s.default_text}>
-                  Место в рейтинге СК {userData?.university}: 1
+                  Место в рейтинге СК {userData.university}: 1
                 </p>
                 <Link
                   text="перейти к рейтингу участников спортивного клуба"
@@ -85,15 +72,15 @@ const ProfilePage = () => {
               </div>
             </div> */}
             <DistanceStats
-              cur_dist={userData?.total_distance}
-              max_dist={userData?.total_distance}
+              cur_dist={userData.total_distance}
+              max_dist={userData.total_distance}
             />
             <div className={s.line_entity_additional_value_container}>
               <div className={s.line_entity_additional_info}>
                 <Person className={s.person_activities_svg} />
                 <p className={s.default_text}>Общее число активностей</p>
               </div>
-              <p className={s.title_2}>{userData?.total_activities}</p>
+              <p className={s.title_2}>{userData.total_activities}</p>
             </div>
           </div>
         </>

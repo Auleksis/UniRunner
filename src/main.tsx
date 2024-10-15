@@ -7,10 +7,16 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute.tsx";
 import AboutPage from "./pages/AboutPage/AboutPage.tsx";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.tsx";
 import RatingsPage from "./pages/RatingPage/RatingPage.tsx";
+import { Provider } from "react-redux";
+import store from "../store.tsx";
 
 const router = createBrowserRouter([
   {
-    element: <App />,
+    element: (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    ),
     errorElement: (
       <h2>Ooops. It seems this page is still in develepment {":)"}</h2>
     ),

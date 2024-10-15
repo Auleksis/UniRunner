@@ -5,7 +5,7 @@ import Select from "../../components/Select/Select";
 import RadioButtonGroup from "../../components/RadioButton/RadioButtonGroup";
 import useList from "../../components/RadioButton/useList";
 import SearchLine from "../../components/SearchLine/SearchLine";
-import { User } from "../../models/User";
+import { User } from "../../features/user/User";
 import { getUniversities, getUsers } from "../../services/api";
 import Button from "../../components/Button/Button";
 import { University } from "../../models/University";
