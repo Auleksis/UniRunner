@@ -5,8 +5,16 @@ import { University } from "../models/University";
 
 const API_URL = "/api/v1";
 
+// const api: AxiosInstance = axios.create({
+//   baseURL:
+//     (import.meta.env.PROD
+//       ? "http://running.kronbars.ru:8081/"
+//       : "http://localhost:8081") + API_URL,
+//   withCredentials: true,
+// });
+
 const api: AxiosInstance = axios.create({
-  baseURL: "http://localhost:8081" + API_URL,
+  baseURL: "http://running.kronbars.ru:8081" + API_URL,
   withCredentials: true,
 });
 
