@@ -1,13 +1,7 @@
 import Keycloak from "keycloak-js";
 
-// const keycloak = new Keycloak({
-//   url: "http://localhost:8083/",
-//   realm: "running-community",
-//   clientId: "React-auth",
-// });
-
 const keycloak = new Keycloak({
-  url: "https://running.kronbars.ru:8443/",
+  url: import.meta.env.VITE_REACT_APP_KEYCLOAK_ENDPOINT,
   realm: "running-community",
   clientId: "React-auth",
 });

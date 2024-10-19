@@ -3,18 +3,10 @@ import keycloak from "../Keycloak";
 import { User } from "../features/user/User";
 import { University } from "../models/University";
 
-const API_URL = "/api/v1";
-
-// const api: AxiosInstance = axios.create({
-//   baseURL:
-//     (import.meta.env.PROD
-//       ? "http://running.kronbars.ru:8081/"
-//       : "http://localhost:8081") + API_URL,
-//   withCredentials: true,
-// });
-
 const api: AxiosInstance = axios.create({
-  baseURL: "https://running.kronbars.ru:8081" + API_URL,
+  baseURL:
+    import.meta.env.VITE_REACT_APP_API_ENDPOINT +
+    import.meta.env.VITE_REACT_APP_API_URL,
   withCredentials: true,
 });
 
