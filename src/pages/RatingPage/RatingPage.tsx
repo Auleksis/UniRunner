@@ -284,14 +284,10 @@ const RatingsPage = () => {
   return (
     <div>
       <div className={s.rating_page_intro_div}>
-        <div className={s.rating_page_intro_title_div}>
+        <div className={s.page_intro_title_div}>
           <h1 className={s.default_text}>Рейтинги</h1>
         </div>
-        <p className={s.default_text}>
-          {selectedRatingType == "Спортивные клубы"
-            ? "Рейтинг спортивных клубов ВУЗов"
-            : "Рейтинг студентов"}
-        </p>
+        <p className={s.default_text}>Выберите рейтинг</p>
       </div>
       <hr className={s.hr_horizontal} />
       <div className={s.rating_type_and_search}>

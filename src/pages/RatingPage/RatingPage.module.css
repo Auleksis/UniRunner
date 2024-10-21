@@ -17,21 +17,6 @@
   gap: 2rem;
 }
 
-.rating_page_intro_title_div {
-  color: var(--background);
-  background-color: var(--accent);
-
-  width: fit-content;
-
-  & .default_text {
-    color: var(--background);
-    font-weight: 300;
-  }
-
-  padding: 0.5rem 4rem;
-  border-radius: var(--border-radius);
-}
-
 .ratings_container {
   padding: var(--default-padding);
 }

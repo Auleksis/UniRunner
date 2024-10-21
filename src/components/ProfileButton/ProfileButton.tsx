@@ -9,7 +9,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useClickOutside from "../../hooks/useClickOutside";
 
-const ProfileButton = () => {
+export interface ProfileButtonProps extends React.ComponentProps<"button"> {
+  onMenuItemClicked: () => void;
+}
+
+const ProfileButton: React.FunctionComponent<ProfileButtonProps> = ({
+  onMenuItemClicked,
+  ...buttonProps
+}) => {
   const { keycloak } = useKeycloak();
 
   const [open, setOpen] = useState<boolean>(false);
@@ -33,6 +40,7 @@ const ProfileButton = () => {
       svg: <UserIcon className={s.menu_item_profile_icon} />,
       onClick: () => {
         navigate("/profile");
+        onMenuItemClicked();
       },
     },
     {
@@ -41,6 +49,7 @@ const ProfileButton = () => {
       svg: <ExitIcon className={s.menu_item_exit_icon} />,
       onClick: () => {
         keycloak.logout();
+        onMenuItemClicked();
       },
     },
   ];
@@ -78,7 +87,11 @@ const ProfileButton = () => {
 
   return keycloak.authenticated ? (
     <div ref={ref}>
-      <button className={s.profile_button} onClick={handleProfileButtonClicked}>
+      <button
+        className={s.profile_button}
+        onClick={handleProfileButtonClicked}
+        {...buttonProps}
+      >
         <UserIcon className={s.profile_svg} />
       </button>
 

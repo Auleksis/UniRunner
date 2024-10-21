@@ -11,6 +11,10 @@ import { useAppDispatch, RootState } from "../../../store";
 import { cleanPacerInfo } from "../../features/user/User";
 import { getUserData, updateUserPacer } from "../../features/user/UserThunk";
 
+import SignInImage from "/src/assets/instructions/sign_in.png";
+import CreateAppImage from "/src/assets/instructions/create_app.png";
+import IDSecretImage from "/src/assets/instructions/id_secret.png";
+
 const PacerInstructions = () => {
   const [showPacerLinker, setShowPacerLinker] = useState<boolean>(false);
 
@@ -123,19 +127,13 @@ const PacerInstructions = () => {
             <p className={s.default_text}>
               1) Авторизуйтесь или зарегистрируйтесь.
             </p>
-            <img
-              className={s.image}
-              src="/src/assets/instructions/sign_in.png"
-            />
+            <img className={s.image} src={SignInImage} />
             <p className={s.default_text}>
               2) После авторизации сверху кликните на{" "}
               <span className={s.underline}>My App</span> и введите данные.
               Нажмите на <span className={s.underline}>Submit</span>.
             </p>
-            <img
-              className={s.image}
-              src="/src/assets/instructions/create_app.png"
-            />
+            <img className={s.image} src={CreateAppImage} />
             <p className={s.default_text}>
               3) Вам будет показан{" "}
               <span className={s.underline}>Client Secret</span>. Скопируйте его
@@ -143,10 +141,7 @@ const PacerInstructions = () => {
               Reset, чтобы получить новый. Аналогично поступите с полем{" "}
               <span className={s.underline}>Client ID</span>.
             </p>
-            <img
-              className={s.image}
-              src="/src/assets/instructions/id_secret.png"
-            />
+            <img className={s.image} src={IDSecretImage} />
             <Input
               label="Client ID"
               id="input_client_id"

@@ -1,4 +1,5 @@
 import s from "./NewsCard.module.css";
+import NewsCardImage from "/src/assets/images/news_card_back.png";
 
 export interface NewsCardProps {
   title: string;
@@ -13,10 +14,7 @@ const NewsCard: React.FunctionComponent<NewsCardProps> = ({
 }) => {
   return (
     <div className={s.news_card_div}>
-      <img
-        className={s.news_card_image}
-        src="/src/assets/images/news_card_back.png"
-      />
+      <img className={s.news_card_image} src={NewsCardImage} />
       <div className={s.news_card_text}>
         <div className={s.news_card_text_title}>
           <p className={s.small_text}>{title}</p>

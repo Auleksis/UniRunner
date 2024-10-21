@@ -14,7 +14,7 @@
 
   gap: 1rem;
 
-  background-color: var(--text-primary-v-2);
+  background-color: var(--accent);
 
   border-radius: var(--border-radius-2);
 
@@ -29,6 +29,8 @@
   width: 1rem;
   height: 1rem;
   rotate: 180deg;
+
+  fill: var(--background);
 }
 
 .select_options_container {
@@ -42,7 +44,7 @@
 
   text-align: left;
 
-  background-color: var(--text-primary-v-2);
+  background-color: var(--accent);
 
   z-index: 50;
 

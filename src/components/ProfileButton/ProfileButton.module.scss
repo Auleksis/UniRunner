@@ -5,7 +5,7 @@
   width: 4rem;
   height: 4rem;
 
-  fill: var(--accent-v-2);
+  color: var(--accent);
 }
 
 .profile_svg:hover {
@@ -31,15 +31,15 @@
 
   gap: 0.5rem;
 
-  background-color: var(--text-primary-v-2);
+  background-color: var(--accent);
 
   border-style: none;
 
-  box-shadow: 0 0 5px var(--accent-v-2);
-
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-2);
 
   z-index: 100;
+
+  font-weight: 300;
 }
 
 .menu_item_div {
@@ -69,14 +69,15 @@
 .menu_item_profile_icon {
   @include mixins.svg(2rem);
 
-  fill: var(--background);
+  fill-opacity: 1;
+  color: var(--background);
 }
 
 .menu_item_exit_icon {
   @include mixins.svg(2rem);
 
   fill: var(--background);
-
+  fill-opacity: 1;
   color: transparent;
 }
 

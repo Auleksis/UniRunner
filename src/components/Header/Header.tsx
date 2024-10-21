@@ -6,15 +6,26 @@ import Kronbars from "/src/assets/images/kronbars_image.png";
 
 import Link from "../Link/Link";
 import ProfileButton from "../ProfileButton/ProfileButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ImageLink from "../ImageLink/ImageLink";
 
 const Header = () => {
-  //-1 = main Page
+  //-1 = remove selection
   //0 = events
   //1 = ratings
   //2 = about
   const [selectedSection, setSelectedSection] = useState<number>(-1);
+
+  useEffect(() => {
+    const pathname = location.pathname;
+    if (pathname.endsWith("events")) {
+      setSelectedSection(0);
+    } else if (pathname.endsWith("ratings")) {
+      setSelectedSection(1);
+    } else if (pathname.endsWith("about")) {
+      setSelectedSection(2);
+    }
+  }, []);
 
   const Logo = () => {
     return <img src={Kronbars} className={s.header_icon_logo} />;
@@ -52,7 +63,7 @@ const Header = () => {
         </nav>
 
         <div className={s.header_profile_button_div}>
-          <ProfileButton />
+          <ProfileButton onMenuItemClicked={() => setSelectedSection(-1)} />
         </div>
       </header>
     </>

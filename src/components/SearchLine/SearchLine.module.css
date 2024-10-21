@@ -6,7 +6,7 @@
 }
 
 .input {
-  background-color: var(--text-primary-v-2);
+  background-color: var(--accent);
 
   border-radius: var(--border-radius-2);
 
@@ -16,9 +16,16 @@
 
   color: var(--background);
 
+  font-weight: 100;
+
   width: 100%;
 
   font-size: var(--text-size);
+}
+
+.input::placeholder {
+  color: var(--background);
+  font-weight: 100;
 }
 
 .input_found_options_container {
@@ -32,7 +39,7 @@
 
   text-align: left;
 
-  background-color: var(--text-primary-v-2);
+  background-color: var(--accent);
 
   z-index: 60;
 

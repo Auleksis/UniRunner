@@ -10,6 +10,7 @@ export interface SearchLineProps<ObjectType extends object>
   objectHandler: (obj: ObjectType) => string; //Convert an object to string. Use \n to split information into important and additional
   onSearchComplete: (objList: Array<ObjectType>) => void; //To save search results outside the component after a value in search container was selected
   onReturnAllMatchingResultsButton?: () => React.ReactNode; //If defined, shows a list element that returns all matching results after clicked
+  maxLineCount?: number; //how much lines to show
 }
 
 interface ObjectTextDescription<ObjectType extends object> {
@@ -24,6 +25,7 @@ function SearchLine<ObjectType extends object>({
   objectHandler,
   onSearchComplete,
   onReturnAllMatchingResultsButton,
+  maxLineCount = 10,
   ...inputProps
 }: SearchLineProps<ObjectType>) {
   const [options, setOptions] = useState<
@@ -57,7 +59,7 @@ function SearchLine<ObjectType extends object>({
     setResults([]);
     let foundOptions: Array<ObjectTextDescription<ObjectType>> = [];
 
-    if (value.length == 0) {
+    if (value.length < 2) {
       onSearchComplete([]);
       return;
     }
@@ -79,7 +81,7 @@ function SearchLine<ObjectType extends object>({
       setShowResults(true);
     }
 
-    setResults([...foundOptions]);
+    setResults([...foundOptions.slice(0, maxLineCount)]);
   }, [value]);
 
   const onListItemSelected = (index: number) => {

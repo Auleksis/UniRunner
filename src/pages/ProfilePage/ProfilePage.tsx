@@ -33,7 +33,9 @@ const ProfilePage = () => {
 
       {userData.loaded && (
         <>
-          <h1 className={s.title}>Профиль</h1>
+          <div className={s.page_intro_title_div}>
+            <h1 className={s.default_text}>Профиль</h1>
+          </div>
           <hr className={s.hr_horizontal} />
           <div className={s.user_info_div}>
             <div className={s.info_div}>
@@ -48,9 +50,9 @@ const ProfilePage = () => {
                 <p className={s.default_text}>Возраст: {userData.age}</p>
               </div>
             </div>
-            <div className={s.user_photo}>
+            {/* <div className={s.user_photo}>
               <ProfilePhoto onPhotoChanged={handlePhotoChanged} />
-            </div>
+            </div> */}
           </div>
 
           <hr className={s.hr_horizontal} />

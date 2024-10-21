@@ -1,1 +1,38 @@
-@import url("/src/styles/_text.scss");
+@import url("/src/styles/pages.css");
+
+.about_page_intro_div {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  gap: 1rem;
+}
+
+.about_page_intro_text_div {
+  width: 80%;
+  text-align: center;
+
+  font-weight: 100;
+}
+
+.about_page_values_div {
+  display: flex;
+
+  flex-direction: row;
+
+  width: 100%;
+
+  align-items: center;
+
+  justify-content: space-evenly;
+
+  font-weight: 100;
+}
+
+.about_page_congratulations_div {
+  font-weight: 100;
+}
