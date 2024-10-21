@@ -3,7 +3,7 @@
 .line_container {
   display: grid;
 
-  grid-template-columns: 4rem 2fr 4fr 2fr;
+  grid-template-columns: 4rem 2fr 6fr 2fr;
 
   grid-auto-rows: 1fr;
 

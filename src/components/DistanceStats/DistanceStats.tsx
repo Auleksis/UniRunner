@@ -15,7 +15,8 @@ const DistanceStats: React.FunctionComponent<DistanceStatsProps> = ({
   max_dist,
   cur_dist,
 }) => {
-  const widthRatio = (cur_dist / max_dist) * 70 + 30;
+  // const widthRatio = (cur_dist / max_dist) * 70 + 30;
+  const widthRatio = 100;
   return (
     <div className={s.dist_container} style={{ width: `${widthRatio}%` }}>
       <p className={s.default_text}>Общее расстояние:</p>
