@@ -7,6 +7,7 @@ import { RootState, useAppDispatch } from "../../../store";
 import { useSelector } from "react-redux";
 import { getUserData } from "../../features/user/UserThunk";
 import { cleanPacerInfo } from "../../features/user/User";
+import ActivityStats from "../../components/ActivityStats/ActivityStats";
 
 const ProfilePage = () => {
   const dispatch = useAppDispatch();
@@ -73,17 +74,13 @@ const ProfilePage = () => {
                 />
               </div>
             </div> */}
+            <div className={s.profile_page_activities_div}>
+              <ActivityStats count={userData.total_activities} />
+            </div>
             <DistanceStats
               cur_dist={userData.total_distance}
               max_dist={userData.total_distance}
             />
-            <div className={s.line_entity_additional_value_container}>
-              <div className={s.line_entity_additional_info}>
-                <Person className={s.person_activities_svg} />
-                <p className={s.default_text}>Общее число активностей</p>
-              </div>
-              <p className={s.title_2}>{userData.total_activities}</p>
-            </div>
           </div>
         </>
       )}
