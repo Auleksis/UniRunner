@@ -1,5 +1,5 @@
 @use "/src/styles/mixins";
-@import url("/src/styles/_text.scss");
+@import url("/src/styles/pages.css");
 
 .profile_svg {
   width: 4rem;
@@ -87,6 +87,12 @@
   gap: 0.2rem;
 
   height: 100%;
+
+  fill: var(--accent-v-2);
+
+  fill-opacity: 0;
+
+  color: var(--accent-v-2);
 
   align-items: center;
 }

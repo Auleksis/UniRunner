@@ -1,6 +1,39 @@
 @import url("/src/styles/pages.css");
 
+.rating_page_search_button_div {
+  position: fixed;
+
+  rotate: 270deg;
+
+  top: 50%;
+
+  left: -2rem;
+}
+
+.rating_page_intro_div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2rem;
+}
+
+.rating_page_intro_title_div {
+  color: var(--background);
+  background-color: var(--accent);
+
+  width: fit-content;
+
+  & .default_text {
+    color: var(--background);
+    font-weight: 300;
+  }
+
+  padding: 0.5rem 4rem;
+  border-radius: var(--border-radius);
+}
+
 .ratings_container {
+  padding: var(--default-padding);
 }
 
 .rating_type_and_search {

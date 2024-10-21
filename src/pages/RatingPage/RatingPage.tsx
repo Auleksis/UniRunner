@@ -282,11 +282,17 @@ const RatingsPage = () => {
   };
 
   return (
-    <>
-      <h1 className={s.title}>Рейтинги</h1>
-      <p className={s.default_text}>
-        Выберите нужный рейтинг с помощью кнопок снизу.
-      </p>
+    <div>
+      <div className={s.rating_page_intro_div}>
+        <div className={s.rating_page_intro_title_div}>
+          <h1 className={s.default_text}>Рейтинги</h1>
+        </div>
+        <p className={s.default_text}>
+          {selectedRatingType == "Спортивные клубы"
+            ? "Рейтинг спортивных клубов ВУЗов"
+            : "Рейтинг студентов"}
+        </p>
+      </div>
       <hr className={s.hr_horizontal} />
       <div className={s.rating_type_and_search}>
         <RadioButtonGroup
@@ -341,41 +347,37 @@ const RatingsPage = () => {
         <Button text="Вперёд" onClick={handlePageNext} />
       </div>
       <hr className={s.hr_horizontal} />
-      {selectedRatingType === "Студенты" && (
-        <div className={s.ratings_container}>
-          {showedUsers.map((user, index) => (
+      {selectedRatingType === "Студенты" &&
+        showedUsers.map((user, index) => (
+          <div className={s.ratings_container} key={index}>
             <RatingLine
               name={user.lastName + " " + user.firstName}
               index={index + 1 + page * pageCount}
               activities={user.total_activities}
               distance={user.total_distance}
               max_distance={maxUserDistance}
-              key={index}
             />
-          ))}
-        </div>
-      )}
-      {selectedRatingType === "Спортивные клубы" && (
-        <div className={s.ratings_container}>
-          {showedUniversities.map((university, index) => (
+          </div>
+        ))}
+      {selectedRatingType === "Спортивные клубы" &&
+        showedUniversities.map((university, index) => (
+          <div className={s.ratings_container} key={index}>
             <RatingLine
               name={university.ssk_name}
               index={index + 1 + page * pageCount}
               activities={university.total_activities}
               distance={university.total_distance}
               max_distance={maxUniversityDistance}
-              key={index}
             />
-          ))}
-        </div>
-      )}
+          </div>
+        ))}
       <hr className={s.hr_horizontal} />
       <div className={s.page_switch_div}>
         <Button text="Назад" onClick={handlePagePrev} />
         <p className={s.default_text}>Страница {page + 1}</p>
         <Button text="Вперёд" onClick={handlePageNext} />
       </div>
-    </>
+    </div>
   );
 };
 

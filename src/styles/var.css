@@ -1,13 +1,15 @@
 :root {
-  --background: #121212;
+  --background: #ffffff;
 
-  --accent: #344756;
-  --accent-v-2: #7bc3d9;
-  --accent-v-3: #3c4659;
-  --accent-v-4: #7fffd4;
+  --accent: #00205b;
+  --accent-v-2: #72aedd;
+  --accent-v-3: #f8f8f8;
+  --accent-v-4: #697b9e;
+  --accent-v-5: #62b5e5;
 
-  --text-primary: #82b4c3;
-  --text-primary-v-2: #d5d5d5;
+  --text-primary: #191919;
+  --text-primary-v-2: #000000;
+  --text-primary-v-3: #696969;
 
   --hint: #7e7e7e;
 
@@ -15,16 +17,22 @@
 
   --error-color: #ffd088;
 
+  --shifted-shadow: 0px 4px 4px;
+  --inverted_shifted-shadow: 0px -4px 4px;
+
   --default-shadow: 0px 0px 10px;
 
+  --mega-logo-text-size: 5rem;
   --logo-title-text-size: 4rem;
+  --small-text: 1.125rem;
+
   --text-size: 1.5rem;
   --title-text-size: 3rem;
-  --subtitle-text-size: 2rem;
+  --subtitle-text-size: 2.25rem;
   --subtext-size: 1rem;
 
-  --border-radius: 1.25rem;
-  --border-radius-2: 0.625rem;
+  --border-radius: 3.5rem;
+  --border-radius-2: 1rem;
   --default-padding: 0.625rem 1.875rem;
 }
 
@@ -57,6 +65,6 @@
 
 @media screen and (max-width: 1000px) {
   html {
-    font-size: 12px;
+    font-size: 10px;
   }
 }

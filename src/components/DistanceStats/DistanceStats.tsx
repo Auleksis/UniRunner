@@ -20,7 +20,7 @@ const DistanceStats: React.FunctionComponent<DistanceStatsProps> = ({
     <div className={s.dist_container} style={{ width: `${widthRatio}%` }}>
       <p className={s.default_text}>Общее расстояние:</p>
       <div className={s.man_div}>
-        <p className={s.title}>{cur_dist + "км"}</p>
+        <p className={s.title}>{cur_dist / 1000 + " км"}</p>
         <Runner className={s.man_svg} />
       </div>
     </div>

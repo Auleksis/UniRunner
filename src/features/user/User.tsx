@@ -19,6 +19,7 @@ export interface User {
   total_activities: number;
   total_distance: number;
   loaded: boolean;
+  loading: boolean;
   age: number;
 }
 
@@ -40,6 +41,7 @@ const userInitialState: User = {
   total_activities: 0,
   total_distance: 0,
   loaded: false,
+  loading: false,
   age: 0,
 };
 
@@ -59,6 +61,7 @@ export const userSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(getUserData.pending, (state, action) => {
       state.loaded = false;
+      state.loading = true;
     });
     builder.addCase(getUserData.fulfilled, (state, action) => {
       const fetchedUser = action.payload;
@@ -69,23 +72,26 @@ export const userSlice = createSlice({
       fetchedUser.age = diff.getUTCFullYear() - 1970;
 
       fetchedUser.loaded = true;
+      fetchedUser.loading = false;
 
       return fetchedUser;
     });
     builder.addCase(getUserData.rejected, (state, action) => {
       state.loaded = false;
+      state.loading = false;
     });
 
     builder.addCase(updateUserPacer.pending, (state, action) => {
       state.loaded = false;
+      state.loading = true;
     });
     builder.addCase(updateUserPacer.fulfilled, (state, action) => {
-      const updatedUser = action.payload;
-      updatedUser.loaded = true;
-      return updatedUser;
+      state.loaded = true;
+      state.loading = false;
     });
     builder.addCase(updateUserPacer.rejected, (state, action) => {
       state.loaded = false;
+      state.loading = false;
     });
   },
 });

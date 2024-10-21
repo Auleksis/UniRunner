@@ -6,6 +6,10 @@ import { useEffect, useState } from "react";
 import Error from "../Error/Error";
 import keycloak from "../../Keycloak";
 import { updatePaserInfo } from "../../services/api";
+import { useSelector } from "react-redux";
+import { useAppDispatch, RootState } from "../../../store";
+import { cleanPacerInfo } from "../../features/user/User";
+import { getUserData, updateUserPacer } from "../../features/user/UserThunk";
 
 const PacerInstructions = () => {
   const [showPacerLinker, setShowPacerLinker] = useState<boolean>(false);
@@ -14,53 +18,71 @@ const PacerInstructions = () => {
   const [clientSecret, setClientSecret] = useState<string>("");
   const [error, setError] = useState<string>("");
 
+  const dispatch = useAppDispatch();
+  const userData = useSelector((state: RootState) => state.user);
+  const [userLoaded, setUserLoaded] = useState<boolean>(false);
+
+  const fetchUserData = async () => {
+    if (!userData.loaded) {
+      await dispatch(getUserData());
+    }
+  };
+
+  const checkSignedUp = () => {
+    if (!localStorage.getItem(`${userData.id}`) && !userData.pacer_client_id) {
+      setShowPacerLinker(true);
+    } else {
+      localStorage.setItem(`${userData.id}`, "1");
+    }
+  };
+
+  const connectPacer = async (pacerCode: string) => {
+    if (!localStorage.getItem(`${userData.id}`)) {
+      const pacerClientId = sessionStorage.getItem("clientID");
+      const pacerClientSecret = sessionStorage.getItem("clientSecret");
+
+      if (pacerCode && pacerClientId && pacerClientSecret) {
+        setShowPacerLinker(false);
+
+        await dispatch(
+          updateUserPacer({ pacerClientId, pacerClientSecret, pacerCode })
+        );
+
+        sessionStorage.removeItem("clientID");
+        sessionStorage.removeItem("clientSecret");
+
+        localStorage.setItem(`${userData.id}`, "1");
+      }
+    }
+  };
+
   useEffect(() => {
-    const checkSignedUp = async () => {
-      if (keycloak.authenticated) {
-        const userdata = await keycloak.loadUserProfile();
-        if (userdata.id) {
-          if (!localStorage.getItem(userdata.id)) {
-            setShowPacerLinker(true);
-          }
+    if (userLoaded) {
+      checkSignedUp();
+
+      if (!userData.pacer_client_id) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const pacerCode = urlParams.get("code");
+
+        if (pacerCode) {
+          connectPacer(pacerCode);
         }
       }
+    }
+  }, [userLoaded]);
+
+  useEffect(() => {
+    const load = async () => {
+      if (!userData.id) {
+        await fetchUserData();
+      }
+      setUserLoaded(true);
     };
 
-    checkSignedUp();
+    if (keycloak.authenticated) {
+      load();
+    }
   }, [keycloak.authenticated]);
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const pacerCode = urlParams.get("code");
-
-    const addToStorage = async () => {
-      if (keycloak.authenticated) {
-        const clientID = sessionStorage.getItem("clientID");
-        const clientSecret = sessionStorage.getItem("clientSecret");
-
-        const userdata = await keycloak.loadUserProfile();
-        if (userdata.id) {
-          if (
-            pacerCode &&
-            !localStorage.getItem(userdata.id) &&
-            clientID &&
-            clientSecret
-          ) {
-            await updatePaserInfo(clientID, clientSecret, pacerCode);
-
-            sessionStorage.removeItem("clientID");
-            sessionStorage.removeItem("clientSecret");
-
-            localStorage.setItem(userdata.id, "1");
-
-            setShowPacerLinker(false);
-          }
-        }
-      }
-    };
-
-    addToStorage();
-  }, []);
 
   const handleGetCode = () => {
     if (clientID.length == 0 || clientSecret.length == 0) {
@@ -71,7 +93,7 @@ const PacerInstructions = () => {
     sessionStorage.setItem("clientSecret", clientSecret);
 
     const origin = window.location.origin;
-    const redirectPath = "/profile";
+    const redirectPath = "/";
     const redirectUri = encodeURIComponent(`${origin}${redirectPath}`);
     const state = "yes";
     const authUrl = `https://developer.mypacer.com/oauth2/dialog?client_id=${clientID}&redirect_uri=${redirectUri}&state=${state}`;

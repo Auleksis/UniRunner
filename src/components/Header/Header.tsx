@@ -2,32 +2,58 @@
 
 import s from "./Header.module.css";
 
-import Sun from "/src/assets/icons/sun.svg";
-import Moon from "/src/assets/icons/moon.svg";
-import Runner from "/src/assets/icons/runner.svg?react";
+import Kronbars from "/src/assets/images/kronbars_image.png";
 
-import Switch from "../Switch/Switch";
 import Link from "../Link/Link";
 import ProfileButton from "../ProfileButton/ProfileButton";
+import { useState } from "react";
+import ImageLink from "../ImageLink/ImageLink";
 
 const Header = () => {
+  //-1 = main Page
+  //0 = events
+  //1 = ratings
+  //2 = about
+  const [selectedSection, setSelectedSection] = useState<number>(-1);
+
+  const Logo = () => {
+    return <img src={Kronbars} className={s.header_icon_logo} />;
+  };
+
   return (
     <>
-      <header>
-        <nav className={s.header_container}>
-          <div className={s.name_logo_container}>
-            <h1 className={s.logo_title}>UniRunner</h1>
-            <Runner className={s.logo_svg} />
-          </div>
+      <header className={s.header}>
+        <div
+          className={s.header_icon_div}
+          onClick={() => setSelectedSection(-1)}
+        >
+          <ImageLink to="/" image={Logo()} />
+        </div>
 
-          <div className={s.buttons_container}>
-            <Switch handleChange={() => {}} image_on={Moon} image_off={Sun} />
-            <ProfileButton />
-            <Link to={"/about"} text="О проекте" />
-            <Link to={"/ratings"} text="Рейтинги" />
-            <Link to={"/"} text="Мероприятия" />
-          </div>
+        <nav className={s.header_nav_div}>
+          <Link
+            to={"/events"}
+            text="Мероприятия"
+            active={selectedSection == 0}
+            onClick={() => setSelectedSection(0)}
+          />
+          <Link
+            to={"/ratings"}
+            text="Рейтинги"
+            active={selectedSection == 1}
+            onClick={() => setSelectedSection(1)}
+          />
+          <Link
+            to={"/about"}
+            text="О проекте"
+            active={selectedSection == 2}
+            onClick={() => setSelectedSection(2)}
+          />
         </nav>
+
+        <div className={s.header_profile_button_div}>
+          <ProfileButton />
+        </div>
       </header>
     </>
   );

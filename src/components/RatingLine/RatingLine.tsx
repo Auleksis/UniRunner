@@ -15,22 +15,23 @@ const RatingLine: React.FunctionComponent<RatingLineProps> = (
 ) => {
   return (
     <div className={s.line_container}>
-      <div className={s.line_entity_index_name}>
+      <div className={s.entity_index_div}>
         <p className={s.subtitle}>{props.index}</p>
-        <p className={s.subtitle}>{props.name}</p>
       </div>
-      <div className={s.line_distance_container}>
-        <DistanceStats
-          cur_dist={props.distance}
-          max_dist={props.max_distance}
-        />
+      <div className={s.entity_name_div}>
+        <p className={s.default_text}>{props.name}</p>
       </div>
-      <div className={s.line_entity_additional_value_container}>
-        <div className={s.line_entity_additional_info}>
-          <Person className={s.person_activities_svg} />
-          <p className={s.default_text}>Общее число активностей</p>
+      <DistanceStats cur_dist={props.distance} max_dist={props.max_distance} />
+      <div className={s.entity_activities_div}>
+        <div className={s.entity_activities_info_div}>
+          <div className={s.entity_activities_info_text_div}>
+            <p className={s.small_text}>Активности</p>
+            <p className={s.subtext}>Общее количество активностей</p>
+          </div>
+          <div className={s.entity_activities_count_div}>
+            <p className={s.default_text}>{props.activities}</p>
+          </div>
         </div>
-        <p className={s.title_2}>{props.activities}</p>
       </div>
     </div>
   );

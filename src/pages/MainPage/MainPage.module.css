@@ -1,1 +1,165 @@
-@import url("/src/styles/_text.scss");
+@import url("/src/styles/pages.css");
+
+.top_table_div {
+  display: grid;
+
+  height: 100%;
+
+  column-gap: 3rem;
+
+  grid-template-columns: 1fr 1fr 3fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "title rating news"
+    "title rating announcements";
+}
+
+.main_page_title_div {
+  grid-area: title;
+
+  text-align: center;
+
+  align-self: center;
+
+  justify-content: center;
+
+  & .mega_logo_title {
+    font-weight: 900;
+  }
+
+  & .default_text {
+    font-weight: 900;
+
+    background-color: var(--accent-v-2);
+    color: transparent;
+
+    text-align: left;
+
+    text-shadow: var(--shifted-shadow) rgb(from var(--background) r g b / 25%);
+
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+  }
+}
+
+.main_page_rating_div {
+  grid-area: rating;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 4rem 0;
+
+  align-items: center;
+
+  gap: 2rem;
+}
+
+.main_page_rating_title_div {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: row;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.main_page_rating_title {
+  display: flex;
+
+  flex-direction: row;
+
+  position: relative;
+
+  left: -5%;
+
+  align-items: center;
+
+  width: fit-content;
+
+  background-color: var(--accent);
+  border-radius: 0.875rem;
+
+  padding: 0 1rem 0 3rem;
+
+  & .invert_subtitle {
+    font-weight: 900;
+    text-shadow: var(--shifted-shadow)
+      rgb(from var(--text-primary-v-2) r g b / 25%);
+  }
+}
+
+.main_page_rating_title_top {
+  background-color: var(--accent-v-2);
+  border-radius: 0.875rem;
+
+  position: relative;
+
+  left: 5%;
+
+  padding: 0 1rem;
+
+  z-index: 100;
+
+  & .invert_subtitle {
+    font-weight: 900;
+    text-shadow: none;
+  }
+}
+
+.main_page_news_div {
+  grid-area: news;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.main_page_news_title {
+  text-align: left;
+
+  & .accent_subtitle {
+    font-weight: 900;
+  }
+}
+
+.main_page_news_cards {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, 15rem);
+
+  justify-content: start;
+
+  gap: 1rem;
+}
+
+.main_page_announcements_div {
+  grid-area: announcements;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.main_page_announcements_title {
+  text-align: left;
+
+  & .accent_subtitle {
+    font-weight: 900;
+  }
+}
+
+.main_page_announcements_cards {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, 15rem);
+
+  justify-content: start;
+
+  gap: 1rem;
+}

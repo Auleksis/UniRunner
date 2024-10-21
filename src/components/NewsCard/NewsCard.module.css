@@ -1,0 +1,65 @@
+@import url("/src/styles/pages.css");
+
+.news_card_div {
+  display: flex;
+
+  flex-direction: column;
+
+  height: 20rem;
+}
+
+.news_card_image {
+  border-top-left-radius: var(--border-radius-2);
+  border-top-right-radius: var(--border-radius-2);
+
+  display: flex;
+
+  height: 50%;
+}
+
+.news_card_text {
+  border-bottom-left-radius: var(--border-radius-2);
+  border-bottom-right-radius: var(--border-radius-2);
+
+  display: flex;
+
+  flex-direction: column;
+
+  text-overflow: ellipsis;
+
+  height: 50%;
+
+  background-color: var(--accent-v-3);
+
+  padding: 1rem 1rem 0.5rem 1rem;
+
+  gap: 1.25rem;
+
+  overflow: hidden;
+
+  font-weight: 300;
+
+  position: relative;
+}
+
+.news_card_text_title {
+  width: 100%;
+
+  text-align: center;
+}
+
+.news_card_text_cover {
+  height: 30%;
+
+  position: absolute;
+
+  bottom: 0;
+
+  width: 100%;
+
+  background-image: linear-gradient(
+    to top,
+    rgb(from var(--accent-v-3) r g b / 100%),
+    rgb(from var(--accent-v-3) r g b / 0%)
+  );
+}

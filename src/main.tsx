@@ -9,6 +9,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage.tsx";
 import RatingsPage from "./pages/RatingPage/RatingPage.tsx";
 import { Provider } from "react-redux";
 import store from "../store.tsx";
+import EventPage from "./pages/EventPage/EventPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/ratings",
         element: <RatingsPage />,
+      },
+      {
+        path: "/events",
+        element: <EventPage />,
       },
       {
         path: "/profile/*",

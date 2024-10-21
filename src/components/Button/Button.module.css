@@ -1,14 +1,14 @@
-@import url("/src/styles/_text.scss");
+@import url("/src/styles/pages.css");
 
 .button_container {
   display: flex;
   flex-direction: column;
 
-  padding: 10px 30px;
-  background-color: var(--accent-v-2);
+  padding: var(--default-padding);
+  background-color: var(--accent);
   align-items: center;
 
-  border-radius: 20px;
+  border-radius: var(--border-radius);
 
   border-style: none;
 
@@ -20,16 +20,12 @@
 }
 
 .button_container:hover {
-  box-shadow: 0px 0px 10px;
+  box-shadow: var(--default-shadow) var(--text-primary-v-2);
 }
 
 .button_container:active,
 .active {
   color: var(--text-primary);
   background-color: var(--background);
+  box-shadow: var(--default-shadow) var(--text-primary-v-2);
 }
-
-/* button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */

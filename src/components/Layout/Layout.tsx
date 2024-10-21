@@ -4,15 +4,9 @@ import Header from "../Header/Header";
 import s from "./Layout.module.css";
 import { useKeycloak } from "@react-keycloak/web";
 import PacerInstructions from "../PacerInstructions/PacerInstructions";
-import { useEffect } from "react";
 
 const Layout = () => {
   const { initialized } = useKeycloak();
-
-  useEffect(() => {
-    console.log("MODE");
-    console.log(import.meta.env.VITE_REACT_APP_API_ENDPOINT);
-  }, []);
 
   if (!initialized) {
     return (

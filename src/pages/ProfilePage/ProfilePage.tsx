@@ -1,5 +1,5 @@
 import s from "./ProfilePage.module.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import DistanceStats from "../../components/DistanceStats/DistanceStats";
 import ProfilePhoto from "../../components/ProfilePhoto/ProfilePhoto";
 import Person from "/src/assets/icons/fight.svg?react";
@@ -13,9 +13,9 @@ const ProfilePage = () => {
   const userData = useSelector((state: RootState) => state.user);
 
   const fetchUserData = async () => {
-    if (!userData.loaded) {
+    if (!userData.loaded && !userData.loading) {
       await dispatch(getUserData());
-      await dispatch(cleanPacerInfo());
+      // await dispatch(cleanPacerInfo());
     }
   };
 

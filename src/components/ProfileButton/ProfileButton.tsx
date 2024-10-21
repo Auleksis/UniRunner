@@ -2,7 +2,7 @@ import { useKeycloak } from "@react-keycloak/web";
 import s from "./ProfileButton.module.scss";
 import Button from "../Button/Button";
 
-import UserIcon from "/src/assets/icons/profile.svg?react";
+import UserIcon from "/src/assets/icons/user_profile.svg?react";
 import ExitIcon from "/src/assets/icons/exit.svg?react";
 
 import { useState } from "react";

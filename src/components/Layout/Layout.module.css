@@ -1,10 +1,17 @@
 @import url("/src/styles/pages.css");
 
 .layout {
-  display: flex;
-  flex-direction: column;
+  display: grid;
 
-  /* justify-content: space-between; */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 3fr 3fr 3fr;
+  grid-template-areas:
+    "header header header"
+    "content content content"
+    "content content content"
+    "content content content";
+
+  /* flex-direction: column; */
 
   height: 100%;
 
@@ -14,6 +21,8 @@
 }
 
 .main_container {
+  grid-area: content;
+
   display: flex;
 
   flex-direction: column;
@@ -34,5 +43,5 @@
   flex-direction: column;
 
   flex: 1 0 auto;
-  padding: 10px 100px;
+  padding: 1rem 4rem;
 }

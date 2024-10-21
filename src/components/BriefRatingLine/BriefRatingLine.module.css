@@ -1,0 +1,35 @@
+@import url("/src/styles/pages.css");
+
+.brief_rating_line_div {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "index text";
+}
+
+.brief_rating_line_index {
+  grid-column: index;
+
+  text-align: left;
+}
+
+.brief_rating_line_text_div {
+  grid-area: text;
+
+  display: flex;
+
+  align-items: center;
+
+  text-align: left;
+
+  padding: 1rem 1rem;
+
+  border-radius: var(--border-radius-2);
+
+  background-color: var(--accent-v-3);
+
+  & .default_text {
+    font-weight: 300;
+  }
+}
