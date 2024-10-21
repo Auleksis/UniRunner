@@ -1,7 +1,6 @@
 import ActivityStats from "../ActivityStats/ActivityStats";
 import DistanceStats from "../DistanceStats/DistanceStats";
 import s from "./RatingLine.module.css";
-import Person from "/src/assets/icons/fight.svg?react";
 
 export interface RatingLineProps {
   index: number;

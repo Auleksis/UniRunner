@@ -69,6 +69,7 @@ const RatingsPage = () => {
 
   const onRatingTypeSelected = (index: number) => {
     onRatingTypeSelect(index);
+    setPage(0);
 
     if (index == 0) {
       setMaxPage(Math.ceil(universities.length / pageCount));
@@ -138,6 +139,7 @@ const RatingsPage = () => {
   }, []);
 
   useEffect(() => {
+    console.log("RELOADED");
     if (selectedRatingType == "Студенты") {
       let userList: Array<User> = isSearching ? foundUsers : users;
 
@@ -190,11 +192,13 @@ const RatingsPage = () => {
   const onSortSelect = (index: number) => {
     setSortMode(index);
     setSortModeChanged(true);
+    setPage(0);
   };
 
   const onGenderSelect = (index: number) => {
     setGenderMode(index);
     setGenderModeChanged(true);
+    setPage(0);
   };
 
   const onUsersSearchComplete = (objList: Array<User>) => {
@@ -202,6 +206,7 @@ const RatingsPage = () => {
       onGenderSelect(0);
       setFoundUsers(objList);
       setSearching(true);
+      setPage(0);
     } else {
       setSearching(false);
     }
@@ -211,6 +216,7 @@ const RatingsPage = () => {
     if (objList.length > 0) {
       setFoundUniversities(objList);
       setSearching(true);
+      setPage(0);
     } else {
       setSearching(false);
     }
