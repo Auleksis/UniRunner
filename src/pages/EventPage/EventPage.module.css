@@ -1,7 +1,9 @@
 @import url("/src/styles/_text.scss");
 
-.no_event_div {
+.event_page_div {
   display: flex;
+
+  flex-direction: column;
 
   width: 100%;
 

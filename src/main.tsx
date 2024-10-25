@@ -10,6 +10,7 @@ import RatingsPage from "./pages/RatingPage/RatingPage.tsx";
 import { Provider } from "react-redux";
 import store from "../store.tsx";
 import EventPage from "./pages/EventPage/EventPage.tsx";
+import EventShowPage from "./pages/EventShowPage/EventShowPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
             <ProfilePage />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/events/:id",
+        element: <EventShowPage />,
       },
     ],
   },

@@ -139,7 +139,6 @@ const RatingsPage = () => {
   }, []);
 
   useEffect(() => {
-    console.log("RELOADED");
     if (selectedRatingType == "Студенты") {
       let userList: Array<User> = isSearching ? foundUsers : users;
 
