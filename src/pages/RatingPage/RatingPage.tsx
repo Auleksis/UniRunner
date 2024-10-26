@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import RatingLine from "../../components/RatingLine/RatingLine";
 import s from "./RatingPage.module.css";
 import Select from "../../components/Select/Select";
@@ -53,27 +53,41 @@ const RatingsPage = () => {
     []
   );
 
-  const ratingTypes = ["Спортивные клубы", "Студенты"];
+  //additional values for handling opening users rating after univerity line is clicked
+  const searchLineRef = useRef<HTMLInputElement>(null);
+  const [chosenUniverity, setChosenUniversity] = useState<string>("");
+
+  const ratingTypes = ["Спортивные клубы", "Участники"];
   //0 = show sport clubs, 1 = show students (users)
   const [selectedRatingType, onRatingTypeSelect] = useList(ratingTypes);
 
   const sortOptions = ["Расстоянию", "Активностям"];
 
-  const genderOptions = ["Всех", "Юношей", "Девушек"];
+  const genderOptions = ["Все", "Юноши", "Девушки"];
 
   //List view settings
   const [page, setPage] = useState<number>(0);
   const [maxPage, setMaxPage] = useState<number>(0);
   const [fetchCount, setFetchCount] = useState<number>(100000);
+
   const [pageCount, setPageCount] = useState<number>(10);
+  const [pageChanged, setPageChanged] = useState<boolean>(false);
+
+  //For correct paging
+  const [filteredUsers, setFilteredUsers] = useState<Array<User>>([]);
+  const [filteredUniversities, setFilteredUniversities] = useState<
+    Array<University>
+  >([]);
 
   const onRatingTypeSelected = (index: number) => {
     onRatingTypeSelect(index);
     setPage(0);
+    setPageChanged(false);
 
     if (index == 0) {
       setMaxPage(Math.ceil(universities.length / pageCount));
     } else {
+      setGenderMode(0);
       setMaxPage(Math.ceil(users.length / pageCount));
     }
   };
@@ -106,6 +120,8 @@ const RatingsPage = () => {
 
       setUsers(fetchedUsers);
 
+      setFilteredUsers(fetchedUsers);
+
       setShowedUsers(fetchedShowedUsers);
 
       setLoadingUsers(false);
@@ -128,6 +144,8 @@ const RatingsPage = () => {
 
       setUniversities(fetchedUniversities);
 
+      setFilteredUniversities(fetchedUniversities);
+
       setShowedUniversities(fetchedShowedUniversities);
 
       setLoadingUniversities(false);
@@ -139,8 +157,34 @@ const RatingsPage = () => {
   }, []);
 
   useEffect(() => {
-    if (selectedRatingType == "Студенты") {
-      let userList: Array<User> = isSearching ? foundUsers : users;
+    if (pageChanged) {
+      setPageChanged(false);
+
+      if (selectedRatingType == "Участники") {
+        let finalList = filteredUsers.slice(
+          page * pageCount,
+          (page + 1) * pageCount
+        );
+
+        setShowedUsers(finalList);
+      } else {
+        setPageChanged(false);
+
+        let finalList = filteredUniversities.slice(
+          page * pageCount,
+          (page + 1) * pageCount
+        );
+
+        setShowedUniversities(finalList);
+      }
+
+      return;
+    }
+
+    if (selectedRatingType == "Участники") {
+      let userList: Array<User> = [];
+
+      userList = isSearching ? foundUsers : users;
 
       if (sortModeChanged) {
         userList.sort((u1, u2) => {
@@ -152,16 +196,18 @@ const RatingsPage = () => {
         setSortModeChanged(false);
       }
 
-      setMaxPage(Math.ceil(userList.length / pageCount));
-
-      userList = userList.slice(page * pageCount, (page + 1) * pageCount);
-
       if (genderModeChanged) {
         userList = userList.filter(filterUsers);
         setGenderModeChanged(false);
       }
 
-      setShowedUsers(userList.filter(filterUsers));
+      setMaxPage(Math.ceil(userList.length / pageCount));
+
+      setFilteredUsers(userList);
+
+      userList = userList.slice(page * pageCount, (page + 1) * pageCount);
+
+      setShowedUsers(userList);
     } else {
       let universitiesList: Array<University> = isSearching
         ? foundUniversities
@@ -179,6 +225,8 @@ const RatingsPage = () => {
 
       setMaxPage(Math.ceil(universitiesList.length / pageCount));
 
+      setFilteredUniversities(universitiesList);
+
       universitiesList = universitiesList.slice(
         page * pageCount,
         (page + 1) * pageCount
@@ -192,12 +240,14 @@ const RatingsPage = () => {
     setSortMode(index);
     setSortModeChanged(true);
     setPage(0);
+    setPageChanged(false);
   };
 
   const onGenderSelect = (index: number) => {
     setGenderMode(index);
     setGenderModeChanged(true);
     setPage(0);
+    setPageChanged(false);
   };
 
   const onUsersSearchComplete = (objList: Array<User>) => {
@@ -206,6 +256,7 @@ const RatingsPage = () => {
       setFoundUsers(objList);
       setSearching(true);
       setPage(0);
+      setPageChanged(false);
     } else {
       setSearching(false);
     }
@@ -216,6 +267,40 @@ const RatingsPage = () => {
       setFoundUniversities(objList);
       setSearching(true);
       setPage(0);
+      setPageChanged(false);
+    } else {
+      setSearching(false);
+    }
+  };
+
+  function isUser(obj: any): obj is User {
+    return (
+      typeof obj === "object" &&
+      obj !== null &&
+      typeof obj.lastName === "string"
+    );
+  }
+
+  function isUniversity(obj: any): obj is University {
+    return (
+      typeof obj === "object" &&
+      obj !== null &&
+      typeof obj.full_organization_name === "string"
+    );
+  }
+
+  const onSearchComplete = (objList: Array<User | University>) => {
+    if (isUser(objList[0])) {
+      onGenderSelect(0);
+      setFoundUsers(objList as Array<User>);
+      setSearching(true);
+      setPage(0);
+      setPageChanged(false);
+    } else if (isUniversity(objList[0])) {
+      setFoundUniversities(objList as Array<University>);
+      setSearching(true);
+      setPage(0);
+      setPageChanged(false);
     } else {
       setSearching(false);
     }
@@ -231,12 +316,34 @@ const RatingsPage = () => {
     );
   };
 
-  const universitySearchHandle = (university: University) => {
+  const universitySearchHandler = (university: University) => {
     return (
       university.ssk_name +
       "\nУниверситет: " +
       university.full_organization_name
     );
+  };
+
+  const objectHandler = (obj: User | University) => {
+    if (isUser(obj)) {
+      const user = obj as User;
+      return (
+        user.lastName +
+        " " +
+        user.firstName +
+        "\nСпортивный клуб: " +
+        user.university
+      );
+    } else if (isUniversity(obj)) {
+      const university = obj as University;
+      return (
+        university.ssk_name +
+        "\nУниверситет: " +
+        university.full_organization_name
+      );
+    }
+
+    return "";
   };
 
   const userSearchElement = (user: User) => {
@@ -265,6 +372,54 @@ const RatingsPage = () => {
     );
   };
 
+  const objectToNodeConverter = (obj: User | University) => {
+    if (isUser(obj)) {
+      const user = obj as User;
+      return (
+        <div className={s.rating_student_search_element}>
+          <p className={s.invert_default_text}>
+            {user.lastName + " " + user.firstName}
+          </p>
+          <p
+            className={s.invert_subtext}
+          >{`Спортивный клуб: ${user.university}`}</p>
+          <hr className={s.hr_horizontal} style={{ height: "3px" }} />
+        </div>
+      );
+    } else if (isUniversity(obj)) {
+      const university = obj as University;
+      return (
+        <div className={s.rating_student_search_element}>
+          <p className={s.invert_default_text}>{university.ssk_name}</p>
+          <p
+            className={s.invert_subtext}
+          >{`Университет: ${university.full_organization_name}`}</p>
+          <hr className={s.hr_horizontal} style={{ height: "3px" }} />
+        </div>
+      );
+    }
+
+    return "";
+  };
+
+  const onUniversityRatingLineClicked = (university: University) => {
+    setPage(0);
+
+    setChosenUniversity(university.ssk_name);
+
+    setGenderMode(0);
+
+    let univerityUsers = users.filter(
+      (user) => user.university == university.ssk_name
+    );
+
+    setFoundUsers(univerityUsers);
+
+    setSearching(true);
+
+    onRatingTypeSelect(1);
+  };
+
   const returnAllMatchingResultsButton = () => {
     return (
       <div className={s.rating_student_search_element}>
@@ -277,13 +432,22 @@ const RatingsPage = () => {
   const handlePageNext = () => {
     if (page < maxPage - 1) {
       setPage(page + 1);
+      setPageChanged(true);
     }
   };
 
   const handlePagePrev = () => {
     if (page > 0) {
       setPage(page - 1);
+      setPageChanged(true);
     }
+  };
+
+  const showAllUsersClicked = () => {
+    setSearching(false);
+    setPage(0);
+    setChosenUniversity("");
+    setGenderMode(0);
   };
 
   return (
@@ -302,13 +466,46 @@ const RatingsPage = () => {
           onSelected={onRatingTypeSelected}
           selected={selectedRatingType}
         />
-        {selectedRatingType == "Студенты" && (
+
+        <SearchLine<User | University>
+          inputRef={searchLineRef}
+          objectsArray={
+            selectedRatingType == "Участники" ? users : universities
+          }
+          objectToNodeConverter={objectToNodeConverter}
+          objectHandler={objectHandler}
+          onSearchComplete={onSearchComplete}
+          placeholder={
+            selectedRatingType == "Участники"
+              ? "Начните вводить ФИО участника или название спортивного клуба, в котором он состоит"
+              : "Начните вводить название спортивного клуба"
+          }
+          onReturnAllMatchingResultsButton={returnAllMatchingResultsButton}
+        />
+        {selectedRatingType == "Участники" &&
+          isSearching &&
+          chosenUniverity.length > 0 && (
+            <div className={s.rating_page_search_result_title_container}>
+              <p className={s.subtitle}>
+                Рейтинг спортивного клуба {chosenUniverity}
+              </p>
+              <Button
+                text="Показать всех участников"
+                onClick={showAllUsersClicked}
+              />
+            </div>
+          )}
+
+        {/* {selectedRatingType == "Участники" && (
           <SearchLine
+            inputRef={searchLineRef}
             objectsArray={users}
             objectToNodeConverter={userSearchElement}
             objectHandler={userSearchHandler}
             onSearchComplete={onUsersSearchComplete}
-            placeholder={"Начните вводить ФИО студента или название СК"}
+            placeholder={
+              "Начните вводить ФИО участника или название спортивного клуба, в котором он состоит"
+            }
             onReturnAllMatchingResultsButton={returnAllMatchingResultsButton}
           />
         )}
@@ -316,12 +513,12 @@ const RatingsPage = () => {
           <SearchLine
             objectsArray={universities}
             objectToNodeConverter={universitySearchElement}
-            objectHandler={universitySearchHandle}
+            objectHandler={universitySearchHandler}
             onSearchComplete={onUniversitySearchComplete}
-            placeholder={"Начните вводить название СК"}
+            placeholder={"Начните вводить название спортивного клуба"}
             onReturnAllMatchingResultsButton={returnAllMatchingResultsButton}
           />
-        )}
+        )} */}
       </div>
       <hr className={s.hr_horizontal} />
       <div className={s.rating_sort_type_container}>
@@ -330,7 +527,7 @@ const RatingsPage = () => {
           <Select options={sortOptions} onSelectClicked={onSortSelect} />
         </div>
         <div className={s.rating_select_container}>
-          {selectedRatingType === "Студенты" && (
+          {selectedRatingType === "Участники" && (
             <>
               <p className={s.default_text}>Показать рейтинг</p>
               <Select
@@ -342,13 +539,13 @@ const RatingsPage = () => {
           )}
         </div>
       </div>
-      <div className={s.page_switch_div}>
+      {/* <div className={s.page_switch_div}>
         <Button text="Назад" onClick={handlePagePrev} />
         <p className={s.default_text}>Страница {page + 1}</p>
         <Button text="Вперёд" onClick={handlePageNext} />
       </div>
-      <hr className={s.hr_horizontal} />
-      {selectedRatingType === "Студенты" &&
+      <hr className={s.hr_horizontal} /> */}
+      {selectedRatingType === "Участники" &&
         showedUsers.map((user, index) => (
           <div className={s.ratings_container} key={index}>
             <RatingLine
@@ -369,6 +566,8 @@ const RatingsPage = () => {
               activities={university.total_activities}
               distance={university.total_distance}
               max_distance={maxUniversityDistance}
+              clickable
+              onLineClicked={() => onUniversityRatingLineClicked(university)}
             />
           </div>
         ))}

@@ -81,3 +81,13 @@
 .profile_page_activities_div {
   width: 20rem;
 }
+
+.profile_page_stats_container {
+  display: grid;
+
+  grid-template-columns: 3fr 1fr;
+
+  align-items: center;
+
+  gap: 1rem;
+}

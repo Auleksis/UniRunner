@@ -87,3 +87,13 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.rating_page_search_result_title_container {
+  display: flex;
+
+  flex-direction: row;
+
+  align-items: center;
+
+  justify-content: space-between;
+}

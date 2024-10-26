@@ -8,13 +8,19 @@ export interface RatingLineProps {
   distance: number;
   max_distance: number;
   activities: number;
+  clickable?: boolean;
+  onLineClicked?: () => void;
 }
 
 const RatingLine: React.FunctionComponent<RatingLineProps> = (
   props: RatingLineProps
 ) => {
   return (
-    <div className={s.line_container}>
+    <div
+      className={s.line_container}
+      style={props.clickable ? {} : { pointerEvents: "none" }}
+      onClick={props.onLineClicked}
+    >
       <div className={s.entity_index_div}>
         <p className={s.subtitle}>{props.index}</p>
       </div>

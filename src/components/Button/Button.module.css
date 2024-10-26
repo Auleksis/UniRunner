@@ -5,12 +5,16 @@
   flex-direction: column;
 
   padding: var(--default-padding);
+
   background-color: var(--accent);
+
   align-items: center;
 
   border-radius: var(--border-radius);
 
   border-style: none;
+
+  font-size: 1rem;
 
   color: var(--background);
 }

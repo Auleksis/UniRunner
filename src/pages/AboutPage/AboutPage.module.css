@@ -1,38 +1,49 @@
 @import url("/src/styles/pages.css");
 
-.about_page_intro_div {
+.about_page_container {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  padding: 5rem 0;
+
+  gap: 3.5rem;
+}
+
+.about_page_intro_container {
   display: flex;
   flex-direction: column;
 
   align-items: center;
-  justify-content: center;
 
-  width: 100%;
-
-  gap: 1rem;
-}
-
-.about_page_intro_text_div {
-  width: 80%;
   text-align: center;
 
+  justify-content: center;
+
   font-weight: 100;
+
+  width: 80%;
 }
 
-.about_page_values_div {
+.about_page_text_container {
   display: flex;
 
-  flex-direction: row;
-
-  width: 100%;
+  flex-direction: column;
 
   align-items: center;
 
-  justify-content: space-evenly;
+  gap: 1rem;
+
+  width: 80%;
 
   font-weight: 100;
-}
 
-.about_page_congratulations_div {
-  font-weight: 100;
+  text-align: center;
+
+  & .title {
+    font-weight: 900;
+    color: var(--accent);
+  }
 }

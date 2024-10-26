@@ -8,6 +8,14 @@
   grid-auto-rows: 1fr;
 
   gap: 1rem;
+
+  border-style: none;
+
+  background-color: transparent;
+
+  &:hover {
+    background-color: rgb(from var(--accent) r g b / 25%);
+  }
 }
 
 .entity_index_div {

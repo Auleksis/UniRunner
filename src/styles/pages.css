@@ -36,6 +36,6 @@
   border-radius: var(--border-radius);
 }
 
-.black_title {
-  font-weight: 900;
+.black_text {
+  font-weight: normal;
 }

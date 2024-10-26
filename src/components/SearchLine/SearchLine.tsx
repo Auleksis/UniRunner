@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Ref, useEffect, useState } from "react";
 import s from "./SearchLine.module.css";
 import Lens from "/src/assets/icons/search.svg?react";
 import useClickOutside from "../../hooks/useClickOutside";
@@ -11,6 +11,8 @@ export interface SearchLineProps<ObjectType extends object>
   onSearchComplete: (objList: Array<ObjectType>) => void; //To save search results outside the component after a value in search container was selected
   onReturnAllMatchingResultsButton?: () => React.ReactNode; //If defined, shows a list element that returns all matching results after clicked
   maxLineCount?: number; //how much lines to show
+  inputRef?: Ref<HTMLInputElement>;
+  value?: string;
 }
 
 interface ObjectTextDescription<ObjectType extends object> {
@@ -26,12 +28,14 @@ function SearchLine<ObjectType extends object>({
   onSearchComplete,
   onReturnAllMatchingResultsButton,
   maxLineCount = 10,
+  inputRef,
+  value,
   ...inputProps
 }: SearchLineProps<ObjectType>) {
   const [options, setOptions] = useState<
     Array<ObjectTextDescription<ObjectType>>
   >([]);
-  const [value, setValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>(value ?? "");
   const [results, setResults] = useState<
     Array<ObjectTextDescription<ObjectType>>
   >([]);
@@ -59,17 +63,17 @@ function SearchLine<ObjectType extends object>({
     setResults([]);
     let foundOptions: Array<ObjectTextDescription<ObjectType>> = [];
 
-    if (value.length < 2) {
+    if (inputValue.length < 2) {
       onSearchComplete([]);
       return;
     }
 
     let checkRegex = /[-’/`~!#*$@_%+=.,^&(){}[\]|;:”<>?\\]/g;
-    if (checkRegex.test(value)) {
+    if (checkRegex.test(inputValue)) {
       return;
     }
 
-    let regex = new RegExp(`${value}`, "i");
+    let regex = new RegExp(`${inputValue}`, "i");
 
     options.forEach((option) => {
       if (regex.test(option.important) || regex.test(option.additional ?? "")) {
@@ -82,10 +86,10 @@ function SearchLine<ObjectType extends object>({
     }
 
     setResults([...foundOptions.slice(0, maxLineCount)]);
-  }, [value]);
+  }, [inputValue]);
 
   const onListItemSelected = (index: number) => {
-    setValue(results[index].important);
+    setInputValue(results[index].important);
     setShowResults(false);
     onSearchComplete([results[index].obj]);
   };
@@ -106,11 +110,12 @@ function SearchLine<ObjectType extends object>({
       <input
         className={s.input}
         {...inputProps}
-        value={value}
         onClick={() => {
           setShowResults(true);
         }}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => setInputValue(e.target.value)}
+        value={inputValue}
+        ref={inputRef}
       />
       <Lens className={s.search_svg} />
       <hr className={s.vertical_line}></hr>

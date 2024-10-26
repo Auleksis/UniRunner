@@ -74,13 +74,13 @@ const ProfilePage = () => {
                 />
               </div>
             </div> */}
-            <div className={s.profile_page_activities_div}>
+            <div className={s.profile_page_stats_container}>
+              <DistanceStats
+                cur_dist={userData.total_distance}
+                max_dist={userData.total_distance}
+              />
               <ActivityStats count={userData.total_activities} />
             </div>
-            <DistanceStats
-              cur_dist={userData.total_distance}
-              max_dist={userData.total_distance}
-            />
           </div>
         </>
       )}
