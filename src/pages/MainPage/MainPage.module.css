@@ -10,7 +10,7 @@
   grid-template-columns: 1fr 3fr;
   grid-template-areas: "rating news";
 
-  padding-left: 20rem;
+  padding-left: 10rem;
 }
 
 /* .main_page_title_div {
