@@ -4,7 +4,6 @@ export type Inputs = {
 };
 
 export const validateUser = async (value: Inputs) => {
-  //console.log(value);
   await new Promise((resolve) => {
     setTimeout(resolve, 500);
   });

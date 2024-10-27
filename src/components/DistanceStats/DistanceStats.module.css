@@ -14,7 +14,7 @@
 
   align-items: center;
 
-  background-color: var(--accent-v-4);
+  background-color: var(--accent);
 
   & .default_text {
     color: var(--background);

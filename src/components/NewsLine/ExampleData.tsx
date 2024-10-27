@@ -3,7 +3,7 @@ import ArenaImage from "/src/assets/events/arena.jpg";
 import GogolImage from "/src/assets/events/gogol.jpg";
 import ElaginImage from "/src/assets/events/elagin.jpg";
 
-const events: Array<Event> = [
+let events: Array<Event> = [
   {
     id: "1",
     name: "Крылатский трейл",
@@ -55,5 +55,24 @@ const events: Array<Event> = [
     href: "https://reg.o-time.ru/race/24552?utm_source=get.run&utm_medium=partners&utm_campaign=registration",
   },
 ];
+
+events = events.sort((value1, value2) => {
+  const data1_str: string[] = value1.date.split(".", 3);
+  const data1: [number, number, number] = [
+    Number(data1_str[2]),
+    Number(data1_str[1]),
+    Number(data1_str[0]),
+  ];
+  const data2_str: string[] = value2.date.split(".", 3);
+  const data2: [number, number, number] = [
+    Number(data2_str[2]),
+    Number(data2_str[1]),
+    Number(data2_str[0]),
+  ];
+
+  const diff = new Date(...data1).getTime() - new Date(...data2).getTime();
+
+  return diff;
+});
 
 export default events;

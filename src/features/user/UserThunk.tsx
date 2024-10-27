@@ -25,8 +25,6 @@ export const updateUserPacer = createAsyncThunk<User, UserPacerAttributes>(
       pacer_code: userPacerAttributes.pacerCode,
     });
 
-    console.log(updatedData.data);
-
     return updatedData.data;
   }
 );

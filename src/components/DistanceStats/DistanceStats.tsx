@@ -7,7 +7,7 @@ import Runner from "/src/assets/icons/runner.svg?react";
  * @param cur_dist Distance of the current person
  */
 export interface DistanceStatsProps {
-  max_dist: number;
+  max_dist?: number;
   cur_dist: number;
 }
 
