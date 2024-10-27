@@ -24,9 +24,7 @@ const ProfilePage = () => {
     fetchUserData();
   }, []);
 
-  const handlePhotoChanged = (photo: File) => {
-    console.log(photo);
-  };
+  const handlePhotoChanged = (photo: File) => {};
 
   return (
     <div>
