@@ -107,6 +107,10 @@ const RatingsPage = () => {
     const fetchUsers = async () => {
       const fetchedUsers = await getUsers(0, fetchCount);
 
+      if (fetchedUsers.length == 0) {
+        return;
+      }
+
       fetchedUsers.sort((u1, u2) => {
         return u2.total_distance - u1.total_distance;
       });
@@ -131,6 +135,10 @@ const RatingsPage = () => {
 
     const fetchSSKs = async () => {
       const fetchedUniversities = await getUniversities(0, fetchCount);
+
+      if (fetchedUniversities.length == 0) {
+        return;
+      }
 
       fetchedUniversities.sort((u1, u2) => {
         return u2.total_distance - u1.total_distance;
