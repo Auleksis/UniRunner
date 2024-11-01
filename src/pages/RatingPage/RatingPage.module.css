@@ -91,9 +91,59 @@
 .rating_page_search_result_title_container {
   display: flex;
 
+  position: relative;
+
   flex-direction: row;
 
   align-items: center;
 
-  justify-content: space-between;
+  justify-content: center;
+
+  padding-bottom: 1rem;
+}
+
+.triangle_svg {
+  width: 1rem;
+  height: 1rem;
+  rotate: 270deg;
+
+  fill: var(--accent);
+}
+
+.rating_page_search_title_back_button {
+  position: absolute;
+
+  display: flex;
+
+  flex-direction: row;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  left: 0;
+
+  border-style: none;
+
+  background-color: transparent;
+
+  & .default_text {
+    color: var(--accent-v-2);
+
+    border-bottom-style: solid;
+  }
+
+  & .triangle_svg {
+    fill: var(--accent-v-2);
+  }
+
+  &:hover {
+    & .default_text {
+      color: var(--accent);
+    }
+
+    & .triangle_svg {
+      fill: var(--accent);
+    }
+  }
 }

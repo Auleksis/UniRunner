@@ -63,6 +63,19 @@ function SearchLine<ObjectType extends object>({
     setResults([]);
     let foundOptions: Array<ObjectTextDescription<ObjectType>> = [];
 
+    // let checkCyrillic = /\p{Script_Extensions=Cyrillic}/u;
+
+    // if (!inputValue.match(/^[\p{Script_Extensions=Cyrillic}\s]*$/u)) {
+    //   return;
+    // }
+
+    // if (inputValue.match(/\s\s/u)) {
+    //   console.log("БОЛЬШЕ ДВУХ ПРОБЕЛОВ ПОДРЯД");
+    //   return;
+    // }
+
+    // console.log("ВЕРНО");
+
     if (inputValue.length < 2) {
       onSearchComplete([]);
       return;

@@ -42,6 +42,7 @@ const EventLine: React.FunctionComponent<EventLineProps> = ({
           <RRDLink
             className={s.event_line_more_button}
             to={`/events/${eventID}`}
+            // target="_blank"
           >
             <p className={s.small_text}>Подробнее</p>
             <Arrow className={s.event_line_more_button_arrow} />

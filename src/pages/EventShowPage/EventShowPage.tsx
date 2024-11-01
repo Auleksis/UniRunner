@@ -19,9 +19,6 @@ const EventShowPage = () => {
     <div className={s.event_show_page_container}>
       <div className={s.event_shopw_page_title_container}>
         <p className={s.logo_title}>{event?.name}</p>
-        <a className={s.event_show_page_link} href={event?.href}>
-          <p className={s.default_text}>Подробнее</p>
-        </a>
       </div>
       <div className={s.event_show_page_details_container}>
         <div className={s.event_show_page_details_line}>
@@ -33,6 +30,17 @@ const EventShowPage = () => {
           <p className={s.default_text}>{event?.fullDescription}</p>
         </div>
       </div>
+
+      <div className={s.evevt_show_page_link_container}>
+        <a
+          className={s.event_show_page_link}
+          target="_blank"
+          href={event?.href}
+        >
+          <p className={s.default_text}>Подробнее</p>
+        </a>
+      </div>
+
       {event?.image && typeof event.image == "string" && (
         <div className={s.event_show_page_photo_container}>
           <p className={s.title}>Фото</p>

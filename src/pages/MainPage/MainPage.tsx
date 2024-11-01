@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import s from "./MainPage.module.css";
 import { getUniversities } from "../../services/api";
 import BriefRatingLine from "../../components/BriefRatingLine/BriefRatingLine";
-import NewsCard from "../../components/NewsCard/NewsCard";
 import events from "../../components/NewsLine/ExampleData";
 import NewsLine from "../../components/NewsLine/NewsLine";
+import EventLine from "../../components/EventLine/EventLine";
 
 const MainPage = () => {
   const [rating, setRating] = useState<Array<string>>([]);
@@ -39,16 +39,16 @@ const MainPage = () => {
       </div>
       <div className={s.main_page_news_div}>
         <div className={s.main_page_news_title}>
-          <p className={s.accent_subtitle}>Новости</p>
+          <p className={s.accent_subtitle}>События</p>
         </div>
         <div className={s.main_page_news_lines}>
           {events.map((value, index) => (
-            <NewsLine
+            <EventLine
               date={value.date}
               eventID={value.id}
               image={value.image}
               name={value.name}
-              shortDescription={value.shortDescription}
+              description={value.shortDescription}
               key={index}
             />
           ))}

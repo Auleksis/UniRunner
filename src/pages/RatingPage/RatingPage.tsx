@@ -9,6 +9,7 @@ import { User } from "../../features/user/User";
 import { getUniversities, getUsers } from "../../services/api";
 import Button from "../../components/Button/Button";
 import { University } from "../../models/University";
+import Triangle from "/src/assets/icons/triangle.svg?react";
 
 const RatingsPage = () => {
   //list of all users
@@ -415,10 +416,12 @@ const RatingsPage = () => {
 
     setChosenUniversity(university.ssk_name);
 
+    const lowerCaseName = university.ssk_name.toLowerCase();
+
     setGenderMode(0);
 
     let univerityUsers = users.filter(
-      (user) => user.university == university.ssk_name
+      (user) => user.university.toLowerCase() == lowerCaseName
     );
 
     setFoundUsers(univerityUsers);
@@ -490,19 +493,6 @@ const RatingsPage = () => {
           }
           onReturnAllMatchingResultsButton={returnAllMatchingResultsButton}
         />
-        {selectedRatingType == "Участники" &&
-          isSearching &&
-          chosenUniverity.length > 0 && (
-            <div className={s.rating_page_search_result_title_container}>
-              <p className={s.subtitle}>
-                Рейтинг спортивного клуба {chosenUniverity}
-              </p>
-              <Button
-                text="Показать всех участников"
-                onClick={showAllUsersClicked}
-              />
-            </div>
-          )}
 
         {/* {selectedRatingType == "Участники" && (
           <SearchLine
@@ -529,6 +519,28 @@ const RatingsPage = () => {
         )} */}
       </div>
       <hr className={s.hr_horizontal} />
+
+      {selectedRatingType == "Участники" &&
+        isSearching &&
+        chosenUniverity.length > 0 && (
+          <div className={s.rating_page_search_result_title_container}>
+            <p className={s.subtitle}>
+              Рейтинг спортивного клуба «{chosenUniverity}»
+            </p>
+            {/* <Button
+              text="Показать всех участников"
+              onClick={showAllUsersClicked}
+            /> */}
+            <button
+              className={s.rating_page_search_title_back_button}
+              onClick={showAllUsersClicked}
+            >
+              <Triangle className={s.triangle_svg} />
+              <p className={s.default_text}>Назад ко всем</p>
+            </button>
+          </div>
+        )}
+
       <div className={s.rating_sort_type_container}>
         <div className={s.rating_select_container}>
           <p className={s.default_text}>Сортировать по</p>
