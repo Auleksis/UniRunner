@@ -9,8 +9,8 @@ services:
     volumes:
       - ".:/app"
       - "/app/node_modules"
-      - "/etc/letsencrypt/live/running.kronbars.ru/fullchain.pem:/etc/letsencrypt/live/running.kronbars.ru/fullchain.pem"
-      - "/etc/letsencrypt/live/running.kronbars.ru/privkey.pem:/etc/letsencrypt/live/running.kronbars.ru/privkey.pem"
+      - "/etc/letsencrypt/live/unirunners.ru/fullchain.pem:/etc/letsencrypt/live/unirunners.ru/fullchain.pem"
+      - "/etc/letsencrypt/live/unirunners.ru/privkey.pem:/etc/letsencrypt/live/unirunners.ru/privkey.pem"
       - "/etc/letsencrypt/options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf"
       - "/etc/letsencrypt/ssl-dhparams.pem:/etc/letsencrypt/ssl-dhparams.pem"
     ports:
