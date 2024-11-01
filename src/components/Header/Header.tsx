@@ -34,6 +34,8 @@ const Header = () => {
       setSelectedSection(1);
     } else if (pathname.endsWith("about")) {
       setSelectedSection(2);
+    } else if (pathname.endsWith("rules")) {
+      setSelectedSection(3);
     }
   }, [location.pathname]);
 
