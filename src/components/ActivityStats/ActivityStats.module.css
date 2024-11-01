@@ -1,9 +1,17 @@
 @import url("/src/styles/pages.css");
 
 .entity_activities_div {
-  background-image: url("/src/assets/images/activities.png");
+  /* background-image: url("/src/assets/images/runiners.png"); */
+
+  background-color: var(--accent);
 
   height: 100%;
+
+  display: flex;
+
+  flex-direction: row;
+
+  align-items: center;
 
   background-size: cover;
 

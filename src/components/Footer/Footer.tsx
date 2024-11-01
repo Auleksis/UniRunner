@@ -11,9 +11,13 @@ const Footer = () => {
       <div className={s.footer_title_div}>
         <p className={s.default_text}>Unirunners</p>
         <p className={s.default_text}>
+          Создан при поддержке Минобрнауки России
+        </p>
+        <p className={s.default_text}>
           Обратная связь через телеграм канал:{" "}
           <a
             href={`https://t.me/unirunners`}
+            target="_blank"
             onClick={(e) => {
               onFeedbackClicked();
               e.preventDefault();

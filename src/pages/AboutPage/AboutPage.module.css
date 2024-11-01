@@ -8,8 +8,6 @@
   align-items: center;
 
   padding: 5rem 0;
-
-  gap: 3.5rem;
 }
 
 .about_page_intro_container {
@@ -49,4 +47,42 @@
     font-weight: 900;
     color: var(--accent);
   }
+
+  /* & .accent_subtitle {
+    text-align: center;
+  } */
+}
+
+.about_page_svg_marked_text {
+  display: flex;
+
+  flex-direction: row;
+
+  gap: 2rem;
+
+  align-items: center;
+
+  text-align: left;
+}
+
+.svg_mark {
+  height: fit-content;
+
+  fill: transparent;
+
+  fill-opacity: 0;
+
+  color: var(--accent);
+}
+
+.svg_group_mark {
+  height: fit-content;
+
+  fill: var(--accent);
+
+  color: var(--accent);
+}
+
+.about_page_subscribe_text_container {
+  padding: 5rem 0;
 }

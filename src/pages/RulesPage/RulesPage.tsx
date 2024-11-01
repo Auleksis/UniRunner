@@ -19,8 +19,8 @@ const RulesPage = () => {
       <div className={s.rules_page_text_container}>
         <p className={s.title}>ПРАВИЛА ПРОБЕЖЕК</p>
 
-        <div className={s.rules_page_point_div}>
-          <div className={s.rules_page_point_container}>
+        <div className={s.page_point_div}>
+          <div className={s.page_point_container}>
             <p className={s.accent_subtitle}>1.</p>
             <p className={s.accent_subtitle}>
               <span>
@@ -32,8 +32,8 @@ const RulesPage = () => {
           </div>
         </div>
 
-        <div className={s.rules_page_point_div}>
-          <div className={s.rules_page_point_container}>
+        <div className={s.page_point_div}>
+          <div className={s.page_point_container}>
             <p className={s.accent_subtitle}>2.</p>
             <p className={s.accent_subtitle}>
               <span>
@@ -44,34 +44,36 @@ const RulesPage = () => {
           </div>
         </div>
 
-        <div className={s.rules_page_point_div}>
-          <div className={s.rules_page_point_container}>
+        <div className={s.page_point_div}>
+          <div className={s.page_point_container}>
             <p className={s.accent_subtitle}>3.</p>
             <p className={s.accent_subtitle}>
-              <span>
-                После завершения пробежки активность автоматически подгрузится
-                на ресурс в течение часа. Ты можешь совершать больше 1 пробежки
-                в день, но мы засчитаем только одну, большую по расстоянию.{" "}
+              После завершения пробежки активность автоматически подгрузится на
+              ресурс в течение часа.{" "}
+              <span className={s.black_text}>
+                Ты можешь совершать больше 1 пробежки в день, но мы засчитаем
+                только одну, большую по расстоянию.{" "}
               </span>
             </p>
           </div>
         </div>
 
-        <div className={s.rules_page_point_div}>
-          <div className={s.rules_page_point_container}>
+        <div className={s.page_point_div}>
+          <div className={s.page_point_container}>
             <p className={s.accent_subtitle}>4.</p>
             <p className={s.accent_subtitle}>
-              <span>
-                Засчитываются пробежки с маршрутом от 3,1 км и темпом от 3,5
-                минут на километр до 8 минут на километр. Нет необходимости
-                переводить темп в скорость в км/ч, он указан в минутах на км.
-              </span>
+              <span className={s.black_text}>
+                Засчитываются пробежки с маршрутом от 3,1 км и темпом от 4 минут
+                на километр до 8 минут на километр.
+              </span>{" "}
+              Нет необходимости переводить темп в скорость в км/ч, он указан в
+              минутах на км.
             </p>
           </div>
         </div>
 
-        <div className={s.rules_page_point_div}>
-          <div className={s.rules_page_point_container}>
+        <div className={s.page_point_div}>
+          <div className={s.page_point_container}>
             <p className={s.accent_subtitle}>5.</p>
             <p className={s.accent_subtitle}>
               <span>
@@ -84,8 +86,8 @@ const RulesPage = () => {
 
         <p className={s.title}>ПРИВЯЗКА PACER</p>
 
-        <div className={s.rules_page_point_div}>
-          <div className={s.rules_page_point_container}>
+        <div className={s.page_point_div}>
+          <div className={s.page_point_container}>
             <p className={s.accent_subtitle}>1.</p>
             <p className={s.accent_subtitle}>
               <span>
@@ -98,7 +100,11 @@ const RulesPage = () => {
         </div>
 
         {keycloak.authenticated && (
-          <Button text="Привязать" onClick={onPacerConnect} />
+          <Button
+            fontSize={"2.25rem"}
+            text="Привязать"
+            onClick={onPacerConnect}
+          />
         )}
       </div>
     </div>

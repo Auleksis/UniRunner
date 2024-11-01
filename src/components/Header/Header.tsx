@@ -3,11 +3,14 @@
 import s from "./Header.module.css";
 
 import Kronbars from "/src/assets/images/kronbars_image.png";
+import Runiners from "/src/assets/images/runiners.png";
+import Unirunners from "/src/assets/icons/unirunners.svg?react";
 
 import Link from "../Link/Link";
 import ProfileButton from "../ProfileButton/ProfileButton";
 import { useEffect, useState } from "react";
 import ImageLink from "../ImageLink/ImageLink";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
   //-1 = remove selection
@@ -16,9 +19,15 @@ const Header = () => {
   //2 = about
   //3 = rules
   const [selectedSection, setSelectedSection] = useState<number>(-1);
+  const location = useLocation();
 
   useEffect(() => {
-    const pathname = location.pathname;
+    let pathname = location.pathname;
+
+    if (pathname.charAt(pathname.length - 1) == "/") {
+      pathname = pathname.slice(0, pathname.length - 1);
+    }
+
     if (pathname.endsWith("events")) {
       setSelectedSection(0);
     } else if (pathname.endsWith("ratings")) {
@@ -26,10 +35,10 @@ const Header = () => {
     } else if (pathname.endsWith("about")) {
       setSelectedSection(2);
     }
-  }, []);
+  }, [location.pathname]);
 
   const Logo = () => {
-    return <img src={Kronbars} className={s.header_icon_logo} />;
+    return <img src={Runiners} className={s.header_icon_logo} />;
   };
 
   return (
@@ -40,6 +49,7 @@ const Header = () => {
           onClick={() => setSelectedSection(-1)}
         >
           <ImageLink to="/" image={Logo()} />
+          {/* <Unirunners className={s.unirunners_svg} /> */}
         </div>
 
         <nav className={s.header_nav_div}>
