@@ -11,6 +11,7 @@ import { Provider } from "react-redux";
 import store from "../store.tsx";
 import EventPage from "./pages/EventPage/EventPage.tsx";
 import EventShowPage from "./pages/EventShowPage/EventShowPage.tsx";
+import RulesPage from "./pages/RulesPage/RulesPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/events",
         element: <EventPage />,
+      },
+      {
+        path: "/rules",
+        element: <RulesPage />,
       },
       {
         path: "/profile/*",

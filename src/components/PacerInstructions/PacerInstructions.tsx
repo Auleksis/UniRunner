@@ -8,12 +8,14 @@ import keycloak from "../../Keycloak";
 import { updatePaserInfo } from "../../services/api";
 import { useSelector } from "react-redux";
 import { useAppDispatch, RootState } from "../../../store";
-import { cleanPacerInfo } from "../../features/user/User";
+import { cleanPacerInfo, closePacerConnection } from "../../features/user/User";
 import { getUserData, updateUserPacer } from "../../features/user/UserThunk";
 
 import SignInImage from "/src/assets/instructions/sign_in.png";
 import CreateAppImage from "/src/assets/instructions/create_app.png";
 import IDSecretImage from "/src/assets/instructions/id_secret.png";
+
+import Cross from "/src/assets/icons/cross.svg?react";
 
 const PacerInstructions = () => {
   const [showPacerLinker, setShowPacerLinker] = useState<boolean>(false);
@@ -62,7 +64,14 @@ const PacerInstructions = () => {
 
   useEffect(() => {
     if (userLoaded) {
-      checkSignedUp();
+      //checkSignedUp();
+
+      if (userData.show_pacer_connection) {
+        setShowPacerLinker(true);
+      } else {
+        setShowPacerLinker(false);
+        return;
+      }
 
       if (!userData.pacer_client_id) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -73,7 +82,7 @@ const PacerInstructions = () => {
         }
       }
     }
-  }, [userLoaded]);
+  }, [userLoaded, userData.show_pacer_connection]);
 
   useEffect(() => {
     const load = async () => {
@@ -104,11 +113,16 @@ const PacerInstructions = () => {
     window.location.href = authUrl;
   };
 
+  const onCrossClicked = () => {
+    dispatch(closePacerConnection());
+  };
+
   return (
     <>
       {showPacerLinker && (
         <div className={s.blur_background}>
           <div className={s.linker_container}>
+            <Cross className={s.cross_svg_div} onClick={onCrossClicked} />
             <p className={`${s.title} ${s.form_title}`}>Привязка Pacer</p>
             <p className={s.default_text}>
               Для корректной работы вам необходимо привязать аккаунт Pacer.

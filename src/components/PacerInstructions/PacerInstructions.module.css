@@ -24,6 +24,8 @@
 .linker_container {
   display: flex;
 
+  position: relative;
+
   flex-direction: column;
 
   border-radius: var(--border-radius-2);
@@ -76,4 +78,28 @@
 
 .underline {
   text-decoration: underline;
+}
+
+.cross_svg_div {
+  position: absolute;
+
+  right: 1rem;
+
+  height: 2rem;
+
+  width: 2rem;
+
+  fill: transparent;
+
+  fill-opacity: 0;
+
+  color: var(--accent);
+
+  &:hover {
+    filter: drop-shadow(0px 0px 5px var(--accent-v-2));
+  }
+
+  &:active {
+    filter: drop-shadow(0px 0px 10px var(--text-primary));
+  }
 }

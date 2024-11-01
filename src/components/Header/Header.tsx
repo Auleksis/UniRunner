@@ -14,6 +14,7 @@ const Header = () => {
   //0 = events
   //1 = ratings
   //2 = about
+  //3 = rules
   const [selectedSection, setSelectedSection] = useState<number>(-1);
 
   useEffect(() => {
@@ -53,6 +54,12 @@ const Header = () => {
             text="Рейтинги"
             active={selectedSection == 1}
             onClick={() => setSelectedSection(1)}
+          />
+          <Link
+            to={"/rules"}
+            text="Правила"
+            active={selectedSection == 3}
+            onClick={() => setSelectedSection(3)}
           />
           <Link
             to={"/about"}

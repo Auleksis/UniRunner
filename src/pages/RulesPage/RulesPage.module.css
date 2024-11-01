@@ -1,0 +1,50 @@
+@import url("/src/styles/pages.css");
+
+.rules_page_container {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  padding: 5rem 0;
+}
+
+.rules_page_text_container {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 2rem;
+
+  width: 80%;
+
+  font-weight: 100;
+
+  text-align: left;
+
+  & .title {
+    font-weight: 900;
+    color: var(--accent);
+  }
+}
+
+.rules_page_point_div {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  width: 100%;
+}
+
+.rules_page_point_container {
+  display: grid;
+
+  grid-template-columns: 3rem 1fr;
+
+  gap: 2rem;
+}

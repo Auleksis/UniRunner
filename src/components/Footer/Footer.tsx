@@ -1,7 +1,7 @@
 import s from "./Footer.module.css";
 
 const Footer = () => {
-  const mailto = "mail@kronbars.ru";
+  const mailto = "unirunners";
   const onFeedbackClicked = () => {
     // window.location.href = mailto;
   };
@@ -9,11 +9,11 @@ const Footer = () => {
   return (
     <footer className={s.footer_container}>
       <div className={s.footer_title_div}>
-        <p className={s.default_text}>UNIRUNNER 2024</p>
+        <p className={s.default_text}>Unirunners</p>
         <p className={s.default_text}>
-          Обратная связь:{" "}
+          Обратная связь через телеграм канал:{" "}
           <a
-            href={`mailto:${mailto}`}
+            href={`https://t.me/unirunners`}
             onClick={(e) => {
               onFeedbackClicked();
               e.preventDefault();

@@ -21,6 +21,7 @@ export interface User {
   loaded: boolean;
   loading: boolean;
   age: number;
+  show_pacer_connection: boolean;
 }
 
 const userInitialState: User = {
@@ -43,6 +44,7 @@ const userInitialState: User = {
   loaded: false,
   loading: false,
   age: 0,
+  show_pacer_connection: false,
 };
 
 export const userSlice = createSlice({
@@ -56,6 +58,12 @@ export const userSlice = createSlice({
       state.pacer_code = "";
       state.pacer_refresh_token = "";
       state.pacer_user_id = "";
+    },
+    openPacerConnection: (state) => {
+      state.show_pacer_connection = true;
+    },
+    closePacerConnection: (state) => {
+      state.show_pacer_connection = false;
     },
   },
   extraReducers(builder) {
@@ -96,5 +104,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { cleanPacerInfo } = userSlice.actions;
+export const { cleanPacerInfo, openPacerConnection, closePacerConnection } =
+  userSlice.actions;
 export const userReducer = userSlice.reducer;
