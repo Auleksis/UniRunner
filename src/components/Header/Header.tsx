@@ -4,7 +4,7 @@ import s from "./Header.module.css";
 
 import Kronbars from "/src/assets/images/kronbars_image.png";
 import Runiners from "/src/assets/images/runiners.png";
-import Unirunners from "/src/assets/icons/unirunners.svg?react";
+import Unirunners from "/src/assets/icons/RUNINERS.svg";
 
 import Link from "../Link/Link";
 import ProfileButton from "../ProfileButton/ProfileButton";
@@ -40,7 +40,7 @@ const Header = () => {
   }, [location.pathname]);
 
   const Logo = () => {
-    return <img src={Runiners} className={s.header_icon_logo} />;
+    return <img src={Unirunners} className={s.header_icon_logo} />;
   };
 
   return (
@@ -57,7 +57,7 @@ const Header = () => {
         <nav className={s.header_nav_div}>
           <Link
             to={"/events"}
-            text="Мероприятия"
+            text="События"
             active={selectedSection == 0}
             onClick={() => setSelectedSection(0)}
           />

@@ -13,6 +13,7 @@ const EventPage = () => {
           name={value.name}
           description={value.fullDescription}
           key={index}
+          url={value.href}
         />
       ))}
     </div>

@@ -17,7 +17,7 @@ const Layout = () => {
   const userData = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
-    if (!localStorage.getItem(userData.id)) {
+    if (keycloak.authenticated && !localStorage.getItem(userData.id)) {
       navigate("/rules/");
 
       localStorage.setItem(userData.id, "1");

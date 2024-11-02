@@ -62,11 +62,27 @@
 
   align-items: center;
 
+  height: min-content;
+
   text-align: left;
 }
 
 .svg_mark {
-  height: fit-content;
+  height: 100%;
+
+  width: 25rem;
+
+  fill: transparent;
+
+  fill-opacity: 0;
+
+  color: var(--accent);
+}
+
+.svg_question_mark {
+  height: 100%;
+
+  width: 18rem;
 
   fill: transparent;
 
@@ -76,7 +92,9 @@
 }
 
 .svg_group_mark {
-  height: fit-content;
+  height: 100%;
+
+  width: 18rem;
 
   fill: var(--accent);
 

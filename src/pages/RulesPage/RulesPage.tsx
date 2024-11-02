@@ -17,6 +17,19 @@ const RulesPage = () => {
   return (
     <div className={s.rules_page_container}>
       <div className={s.rules_page_text_container}>
+        <p className={s.title}>ЭТО ВАЖНО</p>
+
+        <p className={s.accent_subtitle}>
+          Для учёта пробежек мы используем{" "}
+          <a href="https://www.mypacer.com/" target="_blank">
+            приложение Pacer
+          </a>
+          . Ты можешь установить его на свой смартфон и включать трек на
+          пробежке, либо продолжать использовать свой любимый трекер и настроить
+          выгрузку в Pacer. Минимальная дистанция для учёта - 3 км. Средний темп
+          от 4.00 до 08.00 мин./км.
+        </p>
+
         <p className={s.title}>ПРАВИЛА ПРОБЕЖЕК</p>
 
         <div className={s.page_point_div}>

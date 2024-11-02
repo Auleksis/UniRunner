@@ -50,6 +50,7 @@ const MainPage = () => {
               name={value.name}
               description={value.shortDescription}
               key={index}
+              url={value.href}
             />
           ))}
         </div>

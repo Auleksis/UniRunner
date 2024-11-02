@@ -10,6 +10,7 @@ export interface EventLineProps {
   description: string;
   eventID: string;
   image: string | React.ReactNode;
+  url?: string;
 }
 
 const EventLine: React.FunctionComponent<EventLineProps> = ({
@@ -18,6 +19,7 @@ const EventLine: React.FunctionComponent<EventLineProps> = ({
   description,
   eventID,
   image,
+  url,
 }) => {
   const getImage = () => {
     if (!image) {
@@ -41,7 +43,8 @@ const EventLine: React.FunctionComponent<EventLineProps> = ({
         <div className={s.event_line_more_container}>
           <RRDLink
             className={s.event_line_more_button}
-            to={`/events/${eventID}`}
+            // to={`/events/${eventID}`}
+            to={url ?? "#"}
             // target="_blank"
           >
             <p className={s.small_text}>Подробнее</p>

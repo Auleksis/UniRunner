@@ -1,11 +1,6 @@
 import s from "./Footer.module.css";
 
 const Footer = () => {
-  const mailto = "unirunners";
-  const onFeedbackClicked = () => {
-    // window.location.href = mailto;
-  };
-
   return (
     <footer className={s.footer_container}>
       <div className={s.footer_title_div}>
@@ -14,16 +9,9 @@ const Footer = () => {
           Создан при поддержке Минобрнауки России
         </p>
         <p className={s.default_text}>
-          Обратная связь через телеграм канал:{" "}
-          <a
-            href={`https://t.me/unirunners`}
-            target="_blank"
-            onClick={(e) => {
-              onFeedbackClicked();
-              e.preventDefault();
-            }}
-          >
-            {mailto}
+          Вопросы и предложения{" "}
+          <a href={`https://t.me/unirunners`} target="_blank">
+            @unirunners
           </a>
         </p>
       </div>
