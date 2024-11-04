@@ -66,11 +66,7 @@ const AboutPage = () => {
           </p>
         </div>
         {!keycloak.authenticated && (
-          <Button
-            fontSize={"2.25rem"}
-            text="Присоединиться"
-            onClick={() => keycloak.login()}
-          />
+          <Button text="Присоединиться" onClick={() => keycloak.login()} />
         )}
 
         <div className={s.about_page_subscribe_text_container}>
