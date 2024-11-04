@@ -27,7 +27,11 @@ const RatingLine: React.FunctionComponent<RatingLineProps> = (
       <div className={s.entity_name_div}>
         <p className={s.default_text}>{props.name}</p>
       </div>
-      <DistanceStats cur_dist={props.distance} max_dist={props.max_distance} />
+      <DistanceStats
+        cur_dist={props.distance}
+        max_dist={props.max_distance}
+        grid_based
+      />
       <ActivityStats count={props.activities} />
     </div>
   );

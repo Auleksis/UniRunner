@@ -3,7 +3,7 @@
 .brief_rating_line_div {
   display: grid;
   width: 100%;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 3rem 4fr;
   grid-template-rows: 1fr;
   grid-template-areas: "index text";
 }

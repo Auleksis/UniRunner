@@ -64,13 +64,15 @@
 
   height: min-content;
 
+  width: 100%;
+
   text-align: left;
 }
 
 .svg_mark {
   height: 100%;
 
-  width: 25rem;
+  width: 8rem;
 
   fill: transparent;
 
@@ -82,7 +84,7 @@
 .svg_question_mark {
   height: 100%;
 
-  width: 18rem;
+  width: 5rem;
 
   fill: transparent;
 
@@ -94,7 +96,7 @@
 .svg_group_mark {
   height: 100%;
 
-  width: 18rem;
+  width: 8rem;
 
   fill: var(--accent);
 
@@ -103,4 +105,18 @@
 
 .about_page_subscribe_text_container {
   padding: 5rem 0;
+}
+
+@media screen and (max-width: 800px) {
+  .svg_group_mark {
+    display: none;
+  }
+
+  .svg_mark {
+    display: none;
+  }
+
+  .svg_question_mark {
+    display: none;
+  }
 }

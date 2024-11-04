@@ -71,3 +71,33 @@
     font-weight: 900;
   }
 }
+
+@media screen and (max-width: 610px) {
+  .entity_activities_info_text_div {
+    display: none;
+  }
+
+  .entity_activities_info_div {
+    width: 100%;
+
+    height: 100%;
+  }
+
+  .entity_activities_count_div {
+    background-color: transparent;
+
+    width: 100%;
+
+    height: 100%;
+
+    text-align: center;
+
+    align-items: center;
+
+    justify-content: center;
+
+    & .default_text {
+      font-weight: normal;
+    }
+  }
+}

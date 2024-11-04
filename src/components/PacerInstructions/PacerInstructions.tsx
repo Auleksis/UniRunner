@@ -132,11 +132,14 @@ const PacerInstructions = () => {
 
             <span className={s.link_info}>
               <p className={s.default_text}>Перейдите по ссылке</p>
-              <Link
-                text="https://developer.mypacer.com/#/signin"
-                to={"https://developer.mypacer.com/#/signin"}
-                target="_blank"
-              />
+              <p className={s.default_text}>
+                <a
+                  href={"https://developer.mypacer.com/#/signin"}
+                  target="_blank"
+                >
+                  https://developer.mypacer.com/#/signin
+                </a>
+              </p>
             </span>
             <p className={s.default_text}>
               1) Авторизуйтесь или зарегистрируйтесь.

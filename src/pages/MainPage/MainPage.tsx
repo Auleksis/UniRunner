@@ -24,22 +24,26 @@ const MainPage = () => {
 
   return (
     <div className={s.top_table_div}>
-      <div className={s.main_page_rating_div}>
-        <div className={s.main_page_rating_title_div}>
-          <div className={s.main_page_rating_title_top}>
-            <p className={s.invert_subtitle}>ТОП-5</p>
+      <div className={s.main_page_rating_wrapper}>
+        <div className={s.main_page_rating_div}>
+          <div className={s.main_page_rating_title_div}>
+            <div className={s.main_page_rating_title_top}>
+              <p className={s.invert_subtitle}>ТОП-5</p>
+            </div>
+            <div className={s.main_page_rating_title}>
+              <p className={s.invert_subtitle}>ВУЗов</p>
+            </div>
           </div>
-          <div className={s.main_page_rating_title}>
-            <p className={s.invert_subtitle}>ВУЗов</p>
-          </div>
+          {rating.map((text, index) => (
+            <BriefRatingLine index={index + 1} text={text} key={index} />
+          ))}
         </div>
-        {rating.map((text, index) => (
-          <BriefRatingLine index={index + 1} text={text} key={index} />
-        ))}
       </div>
       <div className={s.main_page_news_div}>
-        <div className={s.main_page_news_title}>
-          <p className={s.accent_subtitle}>События</p>
+        <div className={s.main_page_news_title_container}>
+          <div className={s.main_page_news_title}>
+            <p className={s.accent_subtitle}>События</p>
+          </div>
         </div>
         <div className={s.main_page_news_lines}>
           {events.map((value, index) => (

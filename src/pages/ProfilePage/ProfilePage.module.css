@@ -91,3 +91,25 @@
 
   gap: 1rem;
 }
+
+.profile_page_stats_title {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .profile_page_stats_container {
+    grid-template-columns: 1fr;
+
+    gap: 0.5rem;
+  }
+
+  .profile_page_stats_title {
+    display: flex;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    align-items: center;
+  }
+}

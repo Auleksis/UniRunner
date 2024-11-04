@@ -53,3 +53,17 @@
     color: inherit;
   }
 }
+
+@media screen and (max-width: 610px) {
+  .active {
+    & .default_text {
+      font-size: 12px;
+    }
+  }
+
+  .inactive {
+    & .default_text {
+      font-size: 12px;
+    }
+  }
+}

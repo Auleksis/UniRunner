@@ -6,8 +6,6 @@
 
   border-radius: var(--border-radius-2);
 
-  min-width: 25rem;
-
   padding: var(--default-padding);
 
   justify-content: space-between;
@@ -15,6 +13,8 @@
   align-items: center;
 
   background-color: var(--accent);
+
+  height: 100%;
 
   & .default_text {
     color: var(--background);
@@ -49,4 +49,28 @@
   color: var(--background);
 
   filter: drop-shadow(0px 0px 5px var(--accent-v-2));
+}
+
+.dist_container_text {
+  display: flex;
+}
+
+@media screen and (max-width: 1270px) {
+  .man_div {
+    & .title {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .man_svg {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .dist_container_text {
+    display: none;
+  }
 }

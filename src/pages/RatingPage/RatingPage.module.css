@@ -17,6 +17,10 @@
   gap: 2rem;
 }
 
+.ratings_columns_titles {
+  display: none;
+}
+
 .ratings_container {
   padding: var(--default-padding);
 }
@@ -145,5 +149,38 @@
     & .triangle_svg {
       fill: var(--accent);
     }
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .ratings_columns_titles {
+    display: grid;
+
+    grid-template-columns: 3.5fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .rating_sort_type_container {
+    flex-direction: column;
+
+    padding: var(--default-padding);
+  }
+
+  .rating_select_container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .rating_page_search_result_title_container {
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .rating_page_search_title_back_button {
+    position: static;
   }
 }

@@ -143,3 +143,25 @@
 
   filter: drop-shadow(0px 0px 5px var(--accent-v-4));
 }
+
+@media screen and (max-width: 1000px) {
+  .line_container {
+    grid-template-columns: 4rem 1fr 1.5fr 1.5fr;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .entity_index_div {
+    display: none;
+  }
+
+  .line_container {
+    grid-template-columns: 1fr 1.5fr 1fr;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .line_container {
+    grid-template-columns: 5fr 1fr 1fr;
+  }
+}

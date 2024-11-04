@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import RatingLine from "../../components/RatingLine/RatingLine";
 import s from "./RatingPage.module.css";
 import Select from "../../components/Select/Select";
-import RadioButtonGroup from "../../components/RadioButton/RadioButtonGroup";
+import RadioButtonGroupProps from "../../components/RadioButton/RadioButtonGroup";
 import useList from "../../components/RadioButton/useList";
 import SearchLine from "../../components/SearchLine/SearchLine";
 import { User } from "../../features/user/User";
@@ -10,6 +10,7 @@ import { getUniversities, getUsers } from "../../services/api";
 import Button from "../../components/Button/Button";
 import { University } from "../../models/University";
 import Triangle from "/src/assets/icons/triangle.svg?react";
+import RadioButtonGroup from "../../components/RadioButton/RadioButtonGroup";
 
 const RatingsPage = () => {
   //list of all users
@@ -524,13 +525,6 @@ const RatingsPage = () => {
         isSearching &&
         chosenUniverity.length > 0 && (
           <div className={s.rating_page_search_result_title_container}>
-            <p className={s.subtitle}>
-              Рейтинг спортивного клуба «{chosenUniverity}»
-            </p>
-            {/* <Button
-              text="Показать всех участников"
-              onClick={showAllUsersClicked}
-            /> */}
             <button
               className={s.rating_page_search_title_back_button}
               onClick={showAllUsersClicked}
@@ -538,6 +532,9 @@ const RatingsPage = () => {
               <Triangle className={s.triangle_svg} />
               <p className={s.default_text}>Назад ко всем</p>
             </button>
+            <p className={s.default_text}>
+              Рейтинг спортивного клуба «{chosenUniverity}»
+            </p>
           </div>
         )}
 
@@ -565,6 +562,13 @@ const RatingsPage = () => {
         <Button text="Вперёд" onClick={handlePageNext} />
       </div>
       <hr className={s.hr_horizontal} /> */}
+      {selectedRatingType === "Участники" && (
+        <div className={s.ratings_columns_titles}>
+          <p className={s.subtext}>Участник</p>
+          <p className={s.subtext}>Расстояние</p>
+          <p className={s.subtext}>Активности</p>
+        </div>
+      )}
       {selectedRatingType === "Участники" &&
         showedUsers.map((user, index) => (
           <div className={s.ratings_container} key={index}>
@@ -577,6 +581,13 @@ const RatingsPage = () => {
             />
           </div>
         ))}
+      {selectedRatingType === "Спортивные клубы" && (
+        <div className={s.ratings_columns_titles}>
+          <p className={s.subtext}>Спортивный клуб</p>
+          <p className={s.subtext}>Расстояние</p>
+          <p className={s.subtext}>Активности</p>
+        </div>
+      )}
       {selectedRatingType === "Спортивные клубы" &&
         showedUniversities.map((university, index) => (
           <div className={s.ratings_container} key={index}>

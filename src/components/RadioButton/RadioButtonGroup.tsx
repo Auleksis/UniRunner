@@ -22,13 +22,13 @@ const RadioButton: React.FunctionComponent<RadioButtonProps> = ({
   );
 };
 
-interface RadioButtonGroup extends React.ComponentProps<"div"> {
+interface RadioButtonGroupProps extends React.ComponentProps<"div"> {
   options: Array<string>;
   onSelected: (index: number) => void;
   selected: string;
 }
 
-const RadioButtonGroup: React.FunctionComponent<RadioButtonGroup> = ({
+const RadioButtonGroup: React.FunctionComponent<RadioButtonGroupProps> = ({
   options,
   onSelected,
   selected,

@@ -9,20 +9,31 @@ import Runner from "/src/assets/icons/runner.svg?react";
 export interface DistanceStatsProps {
   max_dist?: number;
   cur_dist: number;
+  grid_based?: boolean;
 }
 
 const DistanceStats: React.FunctionComponent<DistanceStatsProps> = ({
   max_dist,
   cur_dist,
+  grid_based,
 }) => {
   // const widthRatio = (cur_dist / max_dist) * 70 + 30;
   const widthRatio = 100;
   return (
     <div className={s.dist_container} style={{ width: `${widthRatio}%` }}>
-      <p className={s.default_text}>Общее расстояние:</p>
+      {grid_based ? (
+        <div className={s.dist_container_text}>
+          <p className={s.default_text}>Общее расстояние:</p>
+        </div>
+      ) : (
+        <p className={s.default_text}>Общее расстояние:</p>
+      )}
+
       <div className={s.man_div}>
         <p className={s.title}>{cur_dist / 1000 + " км"}</p>
-        <Runner className={s.man_svg} />
+        <div className={s.dist_container_text}>
+          <Runner className={s.man_svg} />
+        </div>
       </div>
     </div>
   );

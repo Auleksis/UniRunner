@@ -16,43 +16,50 @@ const AboutPage = () => {
         <p className={s.title}>О НАС</p>
 
         <div className={s.about_page_svg_marked_text}>
-          <p className={s.accent_subtitle}>
+          <p className={s.default_text}>
             Мы любим бег. Мы не ограничены материальными, временными и
             пространственными ресурсами. Нам нужны только кроссовки. Мы -
-            <a href={`https://t.me/unirunners`} target="_blank">
-              {" "}
-              сообщество студентов{" "}
-            </a>{" "}
+            <span className={s.black_text}>
+              <a href={`https://t.me/unirunners`} target="_blank">
+                {" "}
+                сообщество студентов{" "}
+              </a>{" "}
+            </span>
             из Санкт-Петербурга, и мы влюблены в пробежки.
           </p>
-          <Runner className={s.svg_mark} />
+          {/* <Runner className={s.svg_mark} /> */}
         </div>
 
         <div className={s.about_page_svg_marked_text}>
-          <Question className={s.svg_question_mark} />
-          <p className={s.accent_subtitle}>
+          {/* <Question className={s.svg_question_mark} /> */}
+          <p className={s.default_text}>
             Хочешь пробежать свои первые 3 км по парку, либо делаешь недельные
             объемы для подготовки к марафонам?
           </p>
         </div>
 
         <div className={s.about_page_svg_marked_text}>
-          <p className={s.accent_subtitle}>
+          <p className={s.default_text}>
             <span>
-              <a href="#" onClick={() => keycloak.login()}>
-                Присоединяйся
-              </a>{" "}
+              <span className={s.black_text}>
+                <a href="#" onClick={() => keycloak.login()}>
+                  Присоединяйся
+                </a>{" "}
+              </span>
               к проекту и находи единомышленников в своём университете. Выходи
               на тренировку и собирай километры в{" "}
-              <Link to={"/ratings/"}> общий рейтинг </Link> альма-матер.
+              <span className={s.black_text}>
+                <Link to={"/ratings/"}> общий рейтинг </Link>
+              </span>{" "}
+              альма-матер.
             </span>
           </p>
-          <Group className={s.svg_group_mark} />
+          {/* <Group className={s.svg_group_mark} /> */}
         </div>
         <div className={s.about_page_svg_marked_text}>
-          <Star className={s.svg_mark} />
+          {/* <Star className={s.svg_mark} /> */}
 
-          <p className={s.accent_subtitle}>
+          <p className={s.default_text}>
             Следи за статистикой в личном кабинете и совершенствуйся каждый
             день. Принимай участие в наших длительных тренировках и забегах.
             Тренируйся и становись счастливее.
@@ -67,12 +74,14 @@ const AboutPage = () => {
         )}
 
         <div className={s.about_page_subscribe_text_container}>
-          <p className={s.accent_subtitle}>
+          <p className={s.default_text}>
             <span>
               Подписывайся на канал{" "}
-              <a href={`https://t.me/unirunners`} target="_blank">
-                Unirunners{" "}
-              </a>{" "}
+              <span className={s.black_text}>
+                <a href={`https://t.me/unirunners`} target="_blank">
+                  Unirunners{" "}
+                </a>{" "}
+              </span>
               и будь в курсе событий проекта!
             </span>
           </p>
