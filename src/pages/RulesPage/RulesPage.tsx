@@ -114,9 +114,12 @@ const RulesPage = () => {
           </div>
         </div>
 
-        {keycloak.authenticated && userData.pacer_client_id.length == 0 && (
-          <Button text="Привязать" onClick={onPacerConnect} />
-        )}
+        {keycloak.authenticated &&
+          userData &&
+          userData.pacer_client_id &&
+          userData.pacer_client_id.length == 0 && (
+            <Button text="Привязать" onClick={onPacerConnect} />
+          )}
       </div>
     </div>
   );
