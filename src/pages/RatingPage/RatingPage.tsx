@@ -422,7 +422,10 @@ const RatingsPage = () => {
     setGenderMode(0);
 
     let univerityUsers = users.filter(
-      (user) => user.university.toLowerCase() == lowerCaseName
+      (user) =>
+        user &&
+        user.university &&
+        user.university.toLowerCase() == lowerCaseName
     );
 
     setFoundUsers(univerityUsers);
