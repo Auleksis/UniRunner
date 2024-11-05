@@ -155,7 +155,19 @@
   }
 }
 
-.main_page_news_lines {
+.main_page_news_lines_mobile {
+  display: none;
+
+  flex-direction: column;
+
+  justify-content: start;
+
+  gap: 2.5rem;
+
+  padding: 4rem 0;
+}
+
+.main_page_news_lines_desktop {
   display: flex;
 
   flex-direction: column;
@@ -197,5 +209,13 @@
 
   .main_page_news_div {
     padding: 0;
+  }
+
+  .main_page_news_lines_mobile {
+    display: flex;
+  }
+
+  .main_page_news_lines_desktop {
+    display: none;
   }
 }

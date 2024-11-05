@@ -4,7 +4,7 @@ import s from "./Header.module.css";
 
 import Kronbars from "/src/assets/images/kronbars_image.png";
 import Runiners from "/src/assets/images/runiners.png";
-import Unirunners from "/src/assets/icons/RUNINERS.svg";
+import Unirunners from "/src/assets/icons/RUNINERS_2.svg";
 import Burger from "/src/assets/icons/burger.svg?react";
 
 import Link from "../Link/Link";

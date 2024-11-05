@@ -45,7 +45,20 @@ const MainPage = () => {
             <p className={s.accent_subtitle}>События</p>
           </div>
         </div>
-        <div className={s.main_page_news_lines}>
+        <div className={s.main_page_news_lines_desktop}>
+          {events.map((value, index) => (
+            <EventLine
+              date={value.date}
+              eventID={value.id}
+              image={value.image}
+              name={value.name}
+              description={value.shortDescription}
+              key={index}
+              url={value.href}
+            />
+          ))}
+        </div>
+        <div className={s.main_page_news_lines_mobile}>
           {events.map((value, index) => (
             <EventLine
               date={value.date}
