@@ -30,7 +30,9 @@ const DistanceStats: React.FunctionComponent<DistanceStatsProps> = ({
       )}
 
       <div className={s.man_div}>
-        <p className={s.title}>{cur_dist / 1000 + " км"}</p>
+        <p className={s.title}>
+          {Math.round((cur_dist / 1000 + Number.EPSILON) * 10) / 10 + " км"}
+        </p>
         <div className={s.dist_container_text}>
           <Runner className={s.man_svg} />
         </div>
