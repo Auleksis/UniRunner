@@ -18,8 +18,6 @@ const MainPage = () => {
     const pacerClientId = sessionStorage.getItem("clientID");
     const pacerClientSecret = sessionStorage.getItem("clientSecret");
 
-    // console.log("CONNECTING");
-
     if (pacerCode && pacerClientId && pacerClientSecret) {
       await dispatch(
         updateUserPacer({ pacerClientId, pacerClientSecret, pacerCode })
@@ -34,9 +32,6 @@ const MainPage = () => {
 
   useEffect(() => {
     if (userData) {
-      //checkSignedUp();
-      console.log("asld");
-
       if (!userData.pacer_client_id) {
         const urlParams = new URLSearchParams(window.location.search);
         const pacerCode = urlParams.get("code");
