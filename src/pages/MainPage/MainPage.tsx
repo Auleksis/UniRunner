@@ -35,6 +35,7 @@ const MainPage = () => {
   useEffect(() => {
     if (userData) {
       //checkSignedUp();
+      console.log("asld");
 
       if (!userData.pacer_client_id) {
         const urlParams = new URLSearchParams(window.location.search);
