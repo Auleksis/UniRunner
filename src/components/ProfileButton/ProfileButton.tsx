@@ -86,7 +86,7 @@ const ProfileButton: React.FunctionComponent<ProfileButtonProps> = ({
   };
 
   return keycloak.authenticated ? (
-    <div ref={ref}>
+    <div className={s.profile_button_container} ref={ref}>
       <button
         className={s.profile_button}
         onClick={handleProfileButtonClicked}
