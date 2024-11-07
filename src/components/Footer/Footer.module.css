@@ -5,9 +5,7 @@
 
   flex-direction: column;
 
-  height: 20rem;
-
-  padding: 2rem 1rem 10rem 1rem;
+  padding: 1rem 3rem;
 
   box-shadow: var(--inverted_shifted-shadow)
     rgb(from var(--text-primary-v-2) r g b / 25%);

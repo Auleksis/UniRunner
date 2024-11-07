@@ -76,14 +76,18 @@ const ProfilePage = () => {
               <div className={s.profile_page_stats_title}>
                 <p className={s.default_text}>Расстояние</p>
               </div>
-              <DistanceStats
-                cur_dist={userData.total_distance}
-                max_dist={userData.total_distance}
-              />
+              <div className={s.profile_page_stats_field_div}>
+                <DistanceStats
+                  cur_dist={userData.total_distance}
+                  max_dist={userData.total_distance}
+                />
+              </div>
               <div className={s.profile_page_stats_title}>
                 <p className={s.default_text}>Активности</p>
               </div>
-              <ActivityStats count={userData.total_activities} />
+              <div className={s.profile_page_stats_field_div}>
+                <ActivityStats count={userData.total_activities} />
+              </div>
             </div>
           </div>
         </>

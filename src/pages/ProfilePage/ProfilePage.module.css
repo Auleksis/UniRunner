@@ -96,6 +96,12 @@
   display: none;
 }
 
+.profile_page_stats_field_div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 @media screen and (max-width: 600px) {
   .profile_page_stats_container {
     grid-template-columns: 1fr;

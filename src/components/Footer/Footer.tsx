@@ -2,7 +2,7 @@ import s from "./Footer.module.css";
 
 const Footer = () => {
   return (
-    <div className={s.footer_container}>
+    <footer className={s.footer_container}>
       <div className={s.footer_title_div}>
         <p className={s.default_text}>Unirunners</p>
         <p className={s.default_text}>
@@ -15,7 +15,7 @@ const Footer = () => {
           </a>
         </p>
       </div>
-    </div>
+    </footer>
   );
 };
 
