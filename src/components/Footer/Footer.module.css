@@ -29,3 +29,9 @@
 
   text-align: center;
 }
+
+@media screen and (max-width: 480px) {
+  .footer_container {
+    padding: 1rem 3rem 10rem 3rem;
+  }
+}
