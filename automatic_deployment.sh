@@ -6,9 +6,7 @@ do
         REMOTE=$(git rev-parse @{u})
 
 
-        if [ $LOCAL = $REMOTE ]; then
-
-        else
+        if [ $LOCAL != $REMOTE ]; then
                 git pull origin main &>/dev/null
                 docker stop frontend
                 docker compose build
