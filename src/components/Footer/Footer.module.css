@@ -5,7 +5,9 @@
 
   flex-direction: column;
 
-  padding: var(--default-padding);
+  height: 20rem;
+
+  padding: 2rem 1rem 10rem 1rem;
 
   box-shadow: var(--inverted_shifted-shadow)
     rgb(from var(--text-primary-v-2) r g b / 25%);
@@ -20,6 +22,7 @@
   width: 100%;
 
   display: flex;
+
   flex-direction: column;
 
   justify-content: flex-start;
@@ -27,6 +30,4 @@
   align-items: center;
 
   text-align: center;
-
-  height: 20rem;
 }

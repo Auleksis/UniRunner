@@ -4,11 +4,14 @@ import s from "./RulesPage.module.css";
 import { useSelector } from "react-redux";
 import { useAppDispatch, RootState } from "../../../store";
 import { openPacerConnection } from "../../features/user/User";
+import { useEffect } from "react";
 
 const RulesPage = () => {
   const { keycloak } = useKeycloak();
   const dispatch = useAppDispatch();
   const userData = useSelector((state: RootState) => state.user);
+
+  useEffect(() => {}, [userData]);
 
   const onPacerConnect = () => {
     dispatch(openPacerConnection());
@@ -101,18 +104,27 @@ const RulesPage = () => {
 
         <p className={s.title}>ПРИВЯЗКА PACER</p>
 
-        <div className={s.page_point_div}>
-          <div className={s.page_point_container}>
-            <p className={s.default_text}>1.</p>
-            <p className={s.default_text}>
-              <span>
-                {keycloak.authenticated
-                  ? "Для привязки Pacer нажмите кнопку ниже и следуйте инструкциям."
-                  : "Для привязки Pacer необходимо авторизоваться."}
-              </span>
-            </p>
+        {keycloak.authenticated &&
+          userData &&
+          userData.pacer_client_id &&
+          userData.pacer_client_id.length != 0 && (
+            <p className={s.default_text}>Вы уже привязали Pacer</p>
+          )}
+
+        {(!userData || (userData && !userData.pacer_client_id)) && (
+          <div className={s.page_point_div}>
+            <div className={s.page_point_container}>
+              <p className={s.default_text}>1.</p>
+              <p className={s.default_text}>
+                <span>
+                  {keycloak.authenticated
+                    ? "Для привязки Pacer нажмите кнопку ниже и следуйте инструкциям."
+                    : "Для привязки Pacer необходимо авторизоваться."}
+                </span>
+              </p>
+            </div>
           </div>
-        </div>
+        )}
 
         {!keycloak.authenticated && (
           <Button text="Авторизоваться" onClick={() => keycloak.login()} />
@@ -123,13 +135,6 @@ const RulesPage = () => {
           userData.pacer_client_id &&
           userData.pacer_client_id.length == 0 && (
             <Button text="Привязать" onClick={onPacerConnect} />
-          )}
-
-        {keycloak.authenticated &&
-          userData &&
-          userData.pacer_client_id &&
-          userData.pacer_client_id.length != 0 && (
-            <p className={s.default_text}>Вы уже привязали Pacer</p>
           )}
       </div>
     </div>
