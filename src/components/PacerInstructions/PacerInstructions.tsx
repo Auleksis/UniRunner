@@ -43,22 +43,22 @@ const PacerInstructions = () => {
   };
 
   const connectPacer = async (pacerCode: string) => {
-    if (!localStorage.getItem(`${userData.id}`)) {
-      const pacerClientId = sessionStorage.getItem("clientID");
-      const pacerClientSecret = sessionStorage.getItem("clientSecret");
+    const pacerClientId = sessionStorage.getItem("clientID");
+    const pacerClientSecret = sessionStorage.getItem("clientSecret");
 
-      if (pacerCode && pacerClientId && pacerClientSecret) {
-        setShowPacerLinker(false);
+    console.log("CONNECTING");
 
-        await dispatch(
-          updateUserPacer({ pacerClientId, pacerClientSecret, pacerCode })
-        );
+    if (pacerCode && pacerClientId && pacerClientSecret) {
+      setShowPacerLinker(false);
 
-        sessionStorage.removeItem("clientID");
-        sessionStorage.removeItem("clientSecret");
+      await dispatch(
+        updateUserPacer({ pacerClientId, pacerClientSecret, pacerCode })
+      );
 
-        localStorage.setItem(`${userData.id}`, "1");
-      }
+      sessionStorage.removeItem("clientID");
+      sessionStorage.removeItem("clientSecret");
+
+      localStorage.setItem(`${userData.id}`, "1");
     }
   };
 
