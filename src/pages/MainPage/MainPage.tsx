@@ -18,7 +18,7 @@ const MainPage = () => {
     const pacerClientId = sessionStorage.getItem("clientID");
     const pacerClientSecret = sessionStorage.getItem("clientSecret");
 
-    console.log("CONNECTING");
+    // console.log("CONNECTING");
 
     if (pacerCode && pacerClientId && pacerClientSecret) {
       await dispatch(
