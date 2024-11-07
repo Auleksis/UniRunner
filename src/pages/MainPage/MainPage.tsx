@@ -5,9 +5,47 @@ import BriefRatingLine from "../../components/BriefRatingLine/BriefRatingLine";
 import events from "../../components/NewsLine/ExampleData";
 import NewsLine from "../../components/NewsLine/NewsLine";
 import EventLine from "../../components/EventLine/EventLine";
+import { useSelector } from "react-redux";
+import { useAppDispatch, RootState } from "../../../store";
+import { updateUserPacer } from "../../features/user/UserThunk";
 
 const MainPage = () => {
   const [rating, setRating] = useState<Array<string>>([]);
+  const dispatch = useAppDispatch();
+  const userData = useSelector((state: RootState) => state.user);
+
+  const connectPacer = async (pacerCode: string) => {
+    const pacerClientId = sessionStorage.getItem("clientID");
+    const pacerClientSecret = sessionStorage.getItem("clientSecret");
+
+    console.log("CONNECTING");
+
+    if (pacerCode && pacerClientId && pacerClientSecret) {
+      await dispatch(
+        updateUserPacer({ pacerClientId, pacerClientSecret, pacerCode })
+      );
+
+      sessionStorage.removeItem("clientID");
+      sessionStorage.removeItem("clientSecret");
+
+      localStorage.setItem(`${userData.id}`, "1");
+    }
+  };
+
+  useEffect(() => {
+    if (userData) {
+      //checkSignedUp();
+
+      if (!userData.pacer_client_id) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const pacerCode = urlParams.get("code");
+
+        if (pacerCode) {
+          connectPacer(pacerCode);
+        }
+      }
+    }
+  }, [userData]);
 
   useEffect(() => {
     const fetchUniversities = async () => {
