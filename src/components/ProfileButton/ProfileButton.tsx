@@ -36,7 +36,7 @@ const ProfileButton: React.FunctionComponent<ProfileButtonProps> = ({
   const options: Array<MenuItemProps> = [
     {
       key: 0,
-      text: "Перейти в профиль",
+      text: "Профиль",
       svg: <UserIcon className={s.menu_item_profile_icon} />,
       onClick: () => {
         navigate("/profile");
