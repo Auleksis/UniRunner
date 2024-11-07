@@ -35,7 +35,6 @@ const MainPage = () => {
   useEffect(() => {
     if (userData) {
       //checkSignedUp();
-      console.log("WORKS");
 
       if (!userData.pacer_client_id) {
         const urlParams = new URLSearchParams(window.location.search);
