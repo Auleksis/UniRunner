@@ -132,8 +132,9 @@ const RulesPage = () => {
 
         {keycloak.authenticated &&
           userData &&
-          userData.pacer_client_id &&
-          userData.pacer_client_id.length == 0 && (
+          (!userData.pacer_client_id ||
+            (userData.pacer_client_id &&
+              userData.pacer_client_id.length == 0)) && (
             <Button text="Привязать" onClick={onPacerConnect} />
           )}
       </div>
