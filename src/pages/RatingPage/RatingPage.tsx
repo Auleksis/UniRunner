@@ -567,9 +567,9 @@ const RatingsPage = () => {
       <hr className={s.hr_horizontal} /> */}
       {selectedRatingType === "Участники" && (
         <div className={s.ratings_columns_titles}>
-          <p className={s.subtext}>Участник</p>
-          <p className={s.subtext}>Расстояние</p>
-          <p className={s.subtext}>Активности</p>
+          <p className={s.minitext}>Участник</p>
+          <p className={s.minitext}>Расстояние</p>
+          <p className={s.minitext}>Активности</p>
         </div>
       )}
       {selectedRatingType === "Участники" &&
@@ -592,9 +592,9 @@ const RatingsPage = () => {
         ))}
       {selectedRatingType === "Спортивные клубы" && (
         <div className={s.ratings_columns_titles}>
-          <p className={s.subtext}>Спортивный клуб</p>
-          <p className={s.subtext}>Расстояние</p>
-          <p className={s.subtext}>Активности</p>
+          <p className={s.minitext}>Спортивный клуб</p>
+          <p className={s.minitext}>Расстояние</p>
+          <p className={s.minitext}>Активности</p>
         </div>
       )}
       {selectedRatingType === "Спортивные клубы" &&

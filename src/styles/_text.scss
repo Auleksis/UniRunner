@@ -57,6 +57,10 @@
   @include mixins.text(var(--subtext-size), var(--text-primary-v-3));
 }
 
+.minitext {
+  @include mixins.text(var(--minitext-size), var(--text-primary-v-2));
+}
+
 .invert_subtext {
   @include mixins.text(var(--subtext-size), var(--background));
 }

@@ -156,7 +156,8 @@
   .ratings_columns_titles {
     display: grid;
 
-    grid-template-columns: 3.5fr 1fr 1fr;
+    grid-template-columns: 5fr 5rem 2rem;
+    gap: 1rem;
     align-items: center;
     justify-items: center;
   }
