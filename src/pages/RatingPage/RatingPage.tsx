@@ -576,7 +576,13 @@ const RatingsPage = () => {
         showedUsers.map((user, index) => (
           <div className={s.ratings_container} key={index}>
             <RatingLine
-              name={user.lastName + " " + user.firstName}
+              name={
+                user.lastName +
+                " " +
+                (user.lastName.length > 6
+                  ? `${user.firstName[0]}.`
+                  : user.firstName)
+              }
               index={index + 1 + page * pageCount}
               activities={user.total_activities}
               distance={user.total_distance}
