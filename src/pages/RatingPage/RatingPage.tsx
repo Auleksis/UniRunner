@@ -579,7 +579,7 @@ const RatingsPage = () => {
               name={
                 user.lastName +
                 " " +
-                (user.lastName.length > 6
+                (user.lastName.length + user.firstName.length > 14
                   ? `${user.firstName[0]}.`
                   : user.firstName)
               }
