@@ -73,4 +73,7 @@
   .dist_container_text {
     display: none;
   }
+  .dist_container {
+    justify-content: center;
+  }
 }
