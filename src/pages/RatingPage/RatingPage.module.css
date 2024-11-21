@@ -158,6 +158,9 @@
 
     grid-template-columns: 5fr 5rem 2rem;
     gap: 1rem;
+
+    padding: 0 1.875rem;
+
     align-items: center;
     justify-items: center;
   }
