@@ -1,7 +1,6 @@
 import { Event } from "../../models/Event";
-import ArenaImage from "/src/assets/events/arena.jpg";
-import GogolImage from "/src/assets/events/gogol.jpg";
-import ElaginImage from "/src/assets/events/elagin.jpg";
+import EveningImage from "/src/assets/events/evening.jpg";
+import MorningImage from "/src/assets/events/morning.jpg";
 
 let events: Array<Event> = [
   {
@@ -11,7 +10,7 @@ let events: Array<Event> = [
     fullDescription:
       "Пусть уже и не белые, но все-таки настоящие петербургские ночи! Что может быть лучше, чем пробежаться по набережным, улицам и проспектам ночной Северной столицы? Присоединяйтесь к беговой экскурсии.",
     shortDescription: "",
-    image: undefined,
+    image: EveningImage,
     href: "https://russiarunning.com/event/NochnayabegovayaekskursiyapotsentruPeterburga29noyabrya/",
   },
   {
@@ -21,21 +20,11 @@ let events: Array<Event> = [
     fullDescription:
       'Наконец-то мы дождались этого события! Появился новый маршрут беговой экскурсии по самому центру Санкт-Петербурга! Многие из вас, наверное, уже были на беговых экскурсиях от автора проекта "Бегущий экскурсовод". Но даже если вы увидели это событие впервые, то приглашаем вас совершить пробежку по самому центру города. Автор проекта - профессиональный экскурсовод, любитель бега и победитель многих конкурсов профессионального мастерства. Во время экскурсии вы узнаете, почему фраза "Не лезь в бутылку" связана с Петербургом, для чего используются пешеходные мосты через некоторые реки и каналы, где находится аптека из стихотворения А.Блока "Ночь, улица, фонарь, аптека", а также много интересного, о чем мы даже не подозреваем, гуляя по городу.',
     shortDescription: "",
-    image: undefined,
+    image: MorningImage,
     href: "https://russiarunning.com/event/UtrennyayabegovayaekskursiyapotsentruPeterburga01dekabrya/",
   },
   {
     id: "3",
-    name: "ОТКРЫТЫЙ КУБОК РФСХ IV этап, Новогодний в Санкт-Петербурге",
-    date: "15.12.2024",
-    fullDescription:
-      "Открытый Кубок РФСХ в соревновательной системе северной ходьбы СВ (далее – СХ СВ) является аналогом Кубка России с возможностью привлечения зарубежных спортсменов. Турнир проводится в соответствии с Правилам соревнований по СХ СВ, утвержденными Советом РФСХ 27 сентября 2023 года и Положением об Открытом Кубке РФСХ.",
-    shortDescription: "",
-    image: undefined,
-    href: "https://russiarunning.com/event/4StageCUP2024SPB/",
-  },
-  {
-    id: "4",
     name: 'Новогодний марафон "Sosnovka Snake" (к Году Змеи 2025)',
     date: "15.12.2024",
     fullDescription:

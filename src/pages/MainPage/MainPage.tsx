@@ -3,7 +3,6 @@ import s from "./MainPage.module.css";
 import { getUniversities } from "../../services/api";
 import BriefRatingLine from "../../components/BriefRatingLine/BriefRatingLine";
 import events from "../../components/NewsLine/ExampleData";
-import NewsLine from "../../components/NewsLine/NewsLine";
 import EventLine from "../../components/EventLine/EventLine";
 import { useSelector } from "react-redux";
 import { useAppDispatch, RootState } from "../../../store";
@@ -65,7 +64,7 @@ const MainPage = () => {
               <p className={s.invert_subtitle}>ТОП-5</p>
             </div>
             <div className={s.main_page_rating_title}>
-              <p className={s.invert_subtitle}>ВУЗов</p>
+              <p className={s.invert_subtitle}>вузов</p>
             </div>
           </div>
           {rating.map((text, index) => (
