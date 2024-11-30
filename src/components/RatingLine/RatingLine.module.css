@@ -3,7 +3,7 @@
 .line_container {
   display: grid;
 
-  grid-template-columns: 4rem 4rem 2fr 4fr 4fr;
+  grid-template-columns: 4rem 2fr 4fr 4fr;
 
   grid-auto-rows: 1fr;
 
@@ -151,7 +151,7 @@
 
 @media screen and (max-width: 1000px) {
   .line_container {
-    grid-template-columns: 4rem 4rem 1fr 1.5fr 1.5fr;
+    grid-template-columns: 4rem 1fr 1.5fr 1.5fr;
   }
 }
 
@@ -161,12 +161,12 @@
   }
 
   .line_container {
-    grid-template-columns: 4rem 1fr 1.5fr 1fr;
+    grid-template-columns: 1fr 1.5fr 1fr;
   }
 }
 
 @media screen and (max-width: 610px) {
   .line_container {
-    grid-template-columns: 4rem 5fr 5rem 2rem;
+    grid-template-columns: 5fr 5rem 2rem;
   }
 }
