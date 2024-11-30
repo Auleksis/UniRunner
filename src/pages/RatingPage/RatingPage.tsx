@@ -19,7 +19,7 @@ const RatingsPage = () => {
   //list of all SSKs
   const [universities, setUniversities] = useState<Array<University>>([]);
 
-  const [univerititiesLogos, setUniversitiesLogos] = useState<Array<string>>(
+  const [univerititiesImages, setUniversitiesImages] = useState<Array<string>>(
     []
   );
 
@@ -106,20 +106,6 @@ const RatingsPage = () => {
     );
   };
 
-  const fetchLogos = async () => {
-    setUniversitiesLogos(() => {
-      return [];
-    });
-
-    for (let i = 0; i < showedUniversities.length; i++) {
-      const logo = await getLogo(showedUniversities[i].id);
-      console.log(logo);
-      setUniversitiesLogos((v) => {
-        return [...v, logo];
-      });
-    }
-  };
-
   useEffect(() => {
     setLoadingUsers(true);
     setLoadingUniversities(true);
@@ -174,11 +160,7 @@ const RatingsPage = () => {
 
       setFilteredUniversities(fetchedUniversities);
 
-      setShowedUniversities(() => {
-        return fetchedShowedUniversities;
-      });
-
-      await fetchLogos();
+      setShowedUniversities(fetchedShowedUniversities);
 
       setLoadingUniversities(false);
 
@@ -207,11 +189,7 @@ const RatingsPage = () => {
           (page + 1) * pageCount
         );
 
-        setShowedUniversities(() => {
-          return finalList;
-        });
-
-        fetchLogos();
+        setShowedUniversities(finalList);
       }
 
       return;
@@ -268,11 +246,7 @@ const RatingsPage = () => {
         (page + 1) * pageCount
       );
 
-      setShowedUniversities(() => {
-        return universitiesList;
-      });
-
-      fetchLogos();
+      setShowedUniversities(universitiesList);
     }
   }, [sortMode, genderMode, isSearching, foundUsers, page]);
 
@@ -495,6 +469,10 @@ const RatingsPage = () => {
     setGenderMode(0);
   };
 
+  const fetchUniversityLogo = async (index: number): Promise<string> => {
+    return await getLogo(index);
+  };
+
   return (
     <div>
       <div className={s.rating_page_intro_div}>
@@ -638,7 +616,7 @@ const RatingsPage = () => {
               max_distance={maxUniversityDistance}
               clickable
               onLineClicked={() => onUniversityRatingLineClicked(university)}
-              image={univerititiesLogos[index]}
+              loadImageFunction={fetchUniversityLogo}
             />
           </div>
         ))}
