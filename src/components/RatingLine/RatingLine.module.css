@@ -145,8 +145,8 @@
 }
 
 .line_image_container {
-  height: 100%;
-  width: auto;
+  height: auto;
+  width: 100%;
 }
 
 @media screen and (max-width: 1000px) {
