@@ -178,14 +178,14 @@ const RatingsPage = () => {
         return fetchedShowedUniversities;
       });
 
+      await fetchLogos();
+
       setLoadingUniversities(false);
 
       setMaxPage(Math.ceil(fetchedUniversities.length / pageCount));
     };
 
     fetchSSKs();
-
-    fetchLogos();
   }, []);
 
   useEffect(() => {
