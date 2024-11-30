@@ -11,25 +11,18 @@ export interface RatingLineProps {
   activities: number;
   clickable?: boolean;
   onLineClicked?: () => void;
-  loadImageFunction?: (index: number) => Promise<string>;
+  image?: Promise<string>;
 }
 
 const RatingLine: React.FunctionComponent<RatingLineProps> = (
   props: RatingLineProps
 ) => {
-  const [loadedImage, setLoadedImage] = useState<undefined | string>(undefined);
+  const [loadedImage, setLoadedImage] = useState<string>("");
 
   useEffect(() => {
-    const fetchImage = async () => {
-      if (props.loadImageFunction) {
-        const image = await props.loadImageFunction(props.index);
-        setLoadedImage(() => {
-          return image;
-        });
-      }
-    };
-
-    fetchImage();
+    if (props.image) {
+      props.image.then((value) => setLoadedImage(value));
+    }
   }, []);
 
   return (
@@ -38,13 +31,13 @@ const RatingLine: React.FunctionComponent<RatingLineProps> = (
       style={props.clickable ? {} : { pointerEvents: "none" }}
       onClick={props.onLineClicked}
     >
-      {!loadedImage && (
+      {loadedImage.length == 0 && (
         <div className={s.entity_index_div}>
           <p className={s.subtitle}>{props.index}</p>
         </div>
       )}
 
-      {loadedImage && (
+      {loadedImage.length != 0 && (
         <div>
           <img className={s.line_image_container} src={loadedImage} />
         </div>

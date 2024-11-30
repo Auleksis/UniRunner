@@ -616,7 +616,7 @@ const RatingsPage = () => {
               max_distance={maxUniversityDistance}
               clickable
               onLineClicked={() => onUniversityRatingLineClicked(university)}
-              loadImageFunction={fetchUniversityLogo}
+              image={fetchUniversityLogo(university.id)}
             />
           </div>
         ))}
