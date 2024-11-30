@@ -41,7 +41,7 @@ const RatingLine: React.FunctionComponent<RatingLineProps> = (
       )}
 
       {loadedImage.length != 0 && (
-        <div>
+        <div className={s.line_image_div}>
           <img className={s.line_image_container} src={loadedImage} />
         </div>
       )}
