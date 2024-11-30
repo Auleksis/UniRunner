@@ -6,7 +6,7 @@ import RadioButtonGroupProps from "../../components/RadioButton/RadioButtonGroup
 import useList from "../../components/RadioButton/useList";
 import SearchLine from "../../components/SearchLine/SearchLine";
 import { User } from "../../features/user/User";
-import { getUniversities, getUsers } from "../../services/api";
+import { getLogo, getUniversities, getUsers } from "../../services/api";
 import Button from "../../components/Button/Button";
 import { University } from "../../models/University";
 import Triangle from "/src/assets/icons/triangle.svg?react";
@@ -18,6 +18,10 @@ const RatingsPage = () => {
 
   //list of all SSKs
   const [universities, setUniversities] = useState<Array<University>>([]);
+
+  const [univerititiesLogos, setUniversitiesLogos] = useState<Array<string>>(
+    []
+  );
 
   //loading flags
   const [loadingUsers, setLoadingUsers] = useState<boolean>(false);
@@ -102,6 +106,19 @@ const RatingsPage = () => {
     );
   };
 
+  const fetchLogos = async () => {
+    setUniversitiesLogos(() => {
+      return [];
+    });
+
+    for (let i = 0; i < showedUniversities.length; i++) {
+      const logo = await getLogo(showedUniversities[i].id);
+      setUniversitiesLogos((v) => {
+        return [...v, logo];
+      });
+    }
+  };
+
   useEffect(() => {
     setLoadingUsers(true);
     setLoadingUniversities(true);
@@ -156,7 +173,9 @@ const RatingsPage = () => {
 
       setFilteredUniversities(fetchedUniversities);
 
-      setShowedUniversities(fetchedShowedUniversities);
+      setShowedUniversities(() => {
+        return fetchedShowedUniversities;
+      });
 
       setLoadingUniversities(false);
 
@@ -164,6 +183,8 @@ const RatingsPage = () => {
     };
 
     fetchSSKs();
+
+    fetchLogos();
   }, []);
 
   useEffect(() => {
@@ -185,7 +206,11 @@ const RatingsPage = () => {
           (page + 1) * pageCount
         );
 
-        setShowedUniversities(finalList);
+        setShowedUniversities(() => {
+          return finalList;
+        });
+
+        fetchLogos();
       }
 
       return;
@@ -242,7 +267,11 @@ const RatingsPage = () => {
         (page + 1) * pageCount
       );
 
-      setShowedUniversities(universitiesList);
+      setShowedUniversities(() => {
+        return universitiesList;
+      });
+
+      fetchLogos();
     }
   }, [sortMode, genderMode, isSearching, foundUsers, page]);
 
@@ -608,6 +637,7 @@ const RatingsPage = () => {
               max_distance={maxUniversityDistance}
               clickable
               onLineClicked={() => onUniversityRatingLineClicked(university)}
+              image={univerititiesLogos[index]}
             />
           </div>
         ))}
