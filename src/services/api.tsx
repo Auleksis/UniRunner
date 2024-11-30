@@ -3,13 +3,6 @@ import keycloak from "../Keycloak";
 import { User } from "../features/user/User";
 import { University } from "../models/University";
 
-const oldAPI =
-  import.meta.env.VITE_REACT_APP_API_ENDPOINT +
-  import.meta.env.VITE_REACT_APP_API_URL;
-const newAPI =
-  import.meta.env.VITE_REACT_APP_API_NEW_ENDPOINT +
-  import.meta.env.VITE_REACT_APP_API_URL;
-
 const api: AxiosInstance = axios.create({
   baseURL:
     import.meta.env.VITE_REACT_APP_API_NEW_ENDPOINT +
@@ -86,6 +79,12 @@ export async function getActivities(): Promise<Array<any>> {
   const activities = await api.get("/activities");
 
   return activities.data;
+}
+
+export async function getLogo(universityID: number): Promise<string> {
+  const logo = await api.get<string>(`/universities/${universityID}/image`);
+
+  return logo.data;
 }
 
 export default api;

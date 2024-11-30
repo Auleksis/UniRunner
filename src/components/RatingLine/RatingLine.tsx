@@ -10,6 +10,7 @@ export interface RatingLineProps {
   activities: number;
   clickable?: boolean;
   onLineClicked?: () => void;
+  image?: string;
 }
 
 const RatingLine: React.FunctionComponent<RatingLineProps> = (
@@ -24,6 +25,13 @@ const RatingLine: React.FunctionComponent<RatingLineProps> = (
       <div className={s.entity_index_div}>
         <p className={s.subtitle}>{props.index}</p>
       </div>
+
+      {props.image && (
+        <div>
+          <img className={s.line_image_container} src={props.image} />
+        </div>
+      )}
+
       <div className={s.entity_name_div}>
         <p className={s.default_text}>{props.name}</p>
       </div>
