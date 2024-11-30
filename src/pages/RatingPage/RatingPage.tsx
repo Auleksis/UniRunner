@@ -469,7 +469,7 @@ const RatingsPage = () => {
     setGenderMode(0);
   };
 
-  const fetchUniversityLogo = async (index: number): Promise<string> => {
+  const fetchUniversityLogo = async (index: number): Promise<Blob> => {
     return await getLogo(index);
   };
 

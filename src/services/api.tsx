@@ -81,8 +81,10 @@ export async function getActivities(): Promise<Array<any>> {
   return activities.data;
 }
 
-export async function getLogo(universityID: number): Promise<string> {
-  const logo = await api.get<string>(`/universities/${universityID}/image`);
+export async function getLogo(universityID: number): Promise<Blob> {
+  const logo = await api.get<Blob>(`/universities/${universityID}/image`, {
+    responseType: "blob",
+  });
 
   return logo.data;
 }

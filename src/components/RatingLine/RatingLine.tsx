@@ -11,7 +11,7 @@ export interface RatingLineProps {
   activities: number;
   clickable?: boolean;
   onLineClicked?: () => void;
-  image?: Promise<string>;
+  image?: Promise<Blob>;
 }
 
 const RatingLine: React.FunctionComponent<RatingLineProps> = (
@@ -21,7 +21,10 @@ const RatingLine: React.FunctionComponent<RatingLineProps> = (
 
   useEffect(() => {
     if (props.image) {
-      props.image.then((value) => setLoadedImage(value));
+      props.image.then((value) => {
+        const imageURL = URL.createObjectURL(value);
+        setLoadedImage(imageURL);
+      });
     }
   }, []);
 
