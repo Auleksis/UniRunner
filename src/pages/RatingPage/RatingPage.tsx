@@ -113,6 +113,7 @@ const RatingsPage = () => {
 
     for (let i = 0; i < showedUniversities.length; i++) {
       const logo = await getLogo(showedUniversities[i].id);
+      console.log(logo);
       setUniversitiesLogos((v) => {
         return [...v, logo];
       });
