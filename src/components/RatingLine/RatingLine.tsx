@@ -40,7 +40,7 @@ const RatingLine: React.FunctionComponent<RatingLineProps> = (
         <p className={s.subtitle}>{props.index}</p>
       </div>
 
-      {loadedImage.length == 0 && (
+      {props.image && loadedImage.length == 0 && (
         <div className={s.line_image_loading_div}></div>
       )}
 
