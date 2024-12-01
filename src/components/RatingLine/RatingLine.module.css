@@ -173,6 +173,10 @@
     display: none;
   }
 
+  .line_image_div {
+    display: none;
+  }
+
   .line_container {
     grid-template-columns: 1fr 1.5fr 1fr;
   }
