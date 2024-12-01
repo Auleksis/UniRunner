@@ -30,7 +30,9 @@ const RatingLine: React.FunctionComponent<RatingLineProps> = (
 
   return (
     <div
-      className={`${s.line_container} ${s.line_container_grid}`}
+      className={`${s.line_container} ${
+        props.image ? s.line_image_container_grid : s.line_container_grid
+      }`}
       style={props.clickable ? {} : { pointerEvents: "none" }}
       onClick={props.onLineClicked}
     >
