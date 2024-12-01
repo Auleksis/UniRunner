@@ -161,6 +161,15 @@
   justify-content: center;
 }
 
+.line_image_loading_div {
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--accent-v-4);
+
+  border-radius: var(--border-radius-2);
+}
+
 .line_image_container {
   height: auto;
   width: 100%;
