@@ -17,8 +17,6 @@ const DistanceStats: React.FunctionComponent<DistanceStatsProps> = ({
   cur_dist,
   grid_based,
 }) => {
-  useEffect(() => {}, [screen.width]);
-
   // const widthRatio = (cur_dist / max_dist) * 70 + 30;
   const widthRatio = 100;
   return (
