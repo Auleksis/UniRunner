@@ -36,11 +36,9 @@ const RatingLine: React.FunctionComponent<RatingLineProps> = (
       style={props.clickable ? {} : { pointerEvents: "none" }}
       onClick={props.onLineClicked}
     >
-      {loadedImage.length == 0 && (
-        <div className={s.entity_index_div}>
-          <p className={s.subtitle}>{props.index}</p>
-        </div>
-      )}
+      <div className={s.entity_index_div}>
+        <p className={s.subtitle}>{props.index}</p>
+      </div>
 
       {loadedImage.length != 0 && (
         <div className={s.line_image_div}>
