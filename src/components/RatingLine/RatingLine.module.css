@@ -1,13 +1,7 @@
 @import url("/src/styles/_text.scss");
 
 .line_container {
-  display: grid;
-
-  grid-template-columns: 4rem 2fr 4fr 4fr;
-
-  grid-auto-rows: 1fr;
-
-  gap: 1rem;
+  display: flex;
 
   border-style: none;
 
@@ -16,6 +10,16 @@
   &:hover {
     background-color: rgb(from var(--accent) r g b / 25%);
   }
+}
+
+.line_container_grid {
+  display: grid;
+
+  grid-template-columns: 4rem 2fr 4fr 4fr;
+
+  grid-auto-rows: 1fr;
+
+  gap: 1rem;
 }
 
 .entity_index_div {
@@ -163,7 +167,7 @@
 }
 
 @media screen and (max-width: 1000px) {
-  .line_container {
+  .line_container_grid {
     grid-template-columns: 4rem 1fr 1.5fr 1.5fr;
   }
 }
@@ -177,13 +181,13 @@
     display: none;
   }
 
-  .line_container {
+  .line_container_grid {
     grid-template-columns: 1fr 1.5fr 1fr;
   }
 }
 
 @media screen and (max-width: 610px) {
-  .line_container {
+  .line_container_grid {
     grid-template-columns: 5fr 5rem 2rem;
   }
 }

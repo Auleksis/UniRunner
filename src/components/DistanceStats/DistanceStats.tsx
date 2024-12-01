@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import s from "./DistanceStats.module.css";
 import Runner from "/src/assets/icons/runner.svg?react";
 

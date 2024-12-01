@@ -34,27 +34,29 @@ const RatingLine: React.FunctionComponent<RatingLineProps> = (
       style={props.clickable ? {} : { pointerEvents: "none" }}
       onClick={props.onLineClicked}
     >
-      {loadedImage.length == 0 && (
-        <div className={s.entity_index_div}>
-          <p className={s.subtitle}>{props.index}</p>
-        </div>
-      )}
+      <div className={s.line_container_grid}>
+        {loadedImage.length == 0 && (
+          <div className={s.entity_index_div}>
+            <p className={s.subtitle}>{props.index}</p>
+          </div>
+        )}
 
-      {loadedImage.length != 0 && (
-        <div className={s.line_image_div}>
-          <img className={s.line_image_container} src={loadedImage} />
-        </div>
-      )}
+        {loadedImage.length != 0 && (
+          <div className={s.line_image_div}>
+            <img className={s.line_image_container} src={loadedImage} />
+          </div>
+        )}
 
-      <div className={s.entity_name_div}>
-        <p className={s.default_text}>{props.name}</p>
+        <div className={s.entity_name_div}>
+          <p className={s.default_text}>{props.name}</p>
+        </div>
+        <DistanceStats
+          cur_dist={props.distance}
+          max_dist={props.max_distance}
+          grid_based
+        />
+        <ActivityStats count={props.activities} />
       </div>
-      <DistanceStats
-        cur_dist={props.distance}
-        max_dist={props.max_distance}
-        grid_based
-      />
-      <ActivityStats count={props.activities} />
     </div>
   );
 };
