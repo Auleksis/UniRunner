@@ -26,6 +26,12 @@ const RatingLine: React.FunctionComponent<RatingLineProps> = (
         setLoadedImage(imageURL);
       });
     }
+
+    return () => {
+      if (loadedImage.length != 0) {
+        URL.revokeObjectURL(loadedImage);
+      }
+    };
   }, []);
 
   return (
