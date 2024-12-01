@@ -1,7 +1,11 @@
 @import url("/src/styles/_text.scss");
 
 .line_container {
-  display: flex;
+  display: grid;
+
+  grid-auto-rows: 1fr;
+
+  gap: 1rem;
 
   border-style: none;
 
@@ -13,15 +17,7 @@
 }
 
 .line_container_grid {
-  display: grid;
-
-  width: 100%;
-
   grid-template-columns: 4rem 2fr 4fr 4fr;
-
-  grid-auto-rows: 1fr;
-
-  gap: 1rem;
 }
 
 .entity_index_div {
