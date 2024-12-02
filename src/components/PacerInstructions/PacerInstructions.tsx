@@ -48,7 +48,13 @@ const PacerInstructions = () => {
 
     console.log("CONNECTING");
 
-    if (pacerCode && pacerClientId && pacerClientSecret) {
+    if (
+      pacerCode &&
+      pacerClientId &&
+      pacerClientSecret &&
+      !userData.loading &&
+      !userData.loaded
+    ) {
       setShowPacerLinker(false);
 
       await dispatch(

@@ -17,7 +17,13 @@ const MainPage = () => {
     const pacerClientId = sessionStorage.getItem("clientID");
     const pacerClientSecret = sessionStorage.getItem("clientSecret");
 
-    if (pacerCode && pacerClientId && pacerClientSecret) {
+    if (
+      pacerCode &&
+      pacerClientId &&
+      pacerClientSecret &&
+      !userData.loading &&
+      !userData.loaded
+    ) {
       await dispatch(
         updateUserPacer({ pacerClientId, pacerClientSecret, pacerCode })
       );
