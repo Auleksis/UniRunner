@@ -50,7 +50,7 @@ const MainPage = () => {
 
   useEffect(() => {
     const fetchUniversities = async () => {
-      const data = await getUniversities(0, 5);
+      const data = await getUniversities(0, 5, "distance_desc");
 
       const universities: Array<string> = [];
       data.forEach((u) => universities.push(u.ssk_name));
