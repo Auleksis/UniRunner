@@ -22,12 +22,15 @@ const RatingLine: React.FunctionComponent<RatingLineProps> = (
 
   useEffect(() => {
     if (props.image) {
-      props.image.then((value) => {
-        const imageURL = URL.createObjectURL(value);
-        setLoadedImage(imageURL);
-      });
-    } else {
-      setLoadedImage(Unirunners);
+      props.image.then(
+        (value) => {
+          const imageURL = URL.createObjectURL(value);
+          setLoadedImage(imageURL);
+        },
+        (reason) => {
+          setLoadedImage(Unirunners);
+        }
+      );
     }
 
     return () => {
