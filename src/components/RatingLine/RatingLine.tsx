@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ActivityStats from "../ActivityStats/ActivityStats";
 import DistanceStats from "../DistanceStats/DistanceStats";
+import Unirunners from "/src/assets/icons/RUNINERS_2.svg";
 import s from "./RatingLine.module.css";
 
 export interface RatingLineProps {
@@ -25,6 +26,8 @@ const RatingLine: React.FunctionComponent<RatingLineProps> = (
         const imageURL = URL.createObjectURL(value);
         setLoadedImage(imageURL);
       });
+    } else {
+      setLoadedImage(Unirunners);
     }
 
     return () => {
